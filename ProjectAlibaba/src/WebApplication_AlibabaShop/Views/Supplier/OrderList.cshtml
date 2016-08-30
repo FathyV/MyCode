@@ -1,0 +1,205 @@
+﻿
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>General Elements</h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2><i class="fa fa-bars"></i> Product <small>Manage your list</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#">Settings 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    <!--Purchase Order List-->
+                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Pending Order</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Processing Order</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Finished Order</a>
+                            </li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                                <!--Pending Order-->
+                                <table class="table table-striped projects">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 1%">#</th>
+                                            <th>Order No</th>
+                                            <th>WholeSaler</th>
+                                            <th>Product</th>
+                                            <th>Quantity</th>
+                                            <th>Total</th>
+                                            <th>OrderDate</th>
+                                            <th>Status</th>
+                                            <th style="width: 20%">#Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            if (item.Status == 0)
+                                            {
+                                                <tr>
+                                                    <td>#</td>
+                                                    <td>
+                                                        @item.OrderNo
+                                                    </td>
+                                                    <td><a>@item.WholeSaler</a></td>
+                                                    <td><a>@item.Product</a></td>
+                                                    <td>@item.Qty</td>
+                                                    <td>@item.TotalPaid</td>
+                                                    <td>@item.OrderDate</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-success btn-xs">Pending</button>
+                                                    </td>
+                                                    <td>
+                                                        <a asp-controller="supplier" asp-action="AcceptOrder" asp-route-id="@item.Id" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Accept </a>
+                                                        <a asp-controller="supplier" asp-action="AbortOrder" asp-route-id="@item.Id" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Abort </a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                                <!--Processing Order-->
+                                <table class="table table-striped projects">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 1%">#</th>
+                                            <th>Order No</th>
+                                            <th>WholeSaler</th>
+                                            <th>Product</th>
+                                            <th>Quantity</th>
+                                            <th>Total</th>
+                                            <th>OrderDate</th>
+                                            <th>Status</th>
+                                            <th style="width: 20%">#Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            if (item.Status == 1)
+                                            {
+                                                <tr>
+                                                    <td>#</td>
+                                                    <td>
+                                                        @item.OrderNo
+                                                    </td>
+                                                    <td><a>@item.WholeSaler</a></td>
+                                                    <td><a>@item.Product</a></td>
+                                                    <td>@item.Qty</td>
+                                                    <td>@item.TotalPaid</td>
+                                                    <td>@item.OrderDate</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-success btn-xs">Pending</button>
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Finish Order </a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+                                <!--Finished Order-->
+                                <table class="table table-striped projects">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 1%">#</th>
+                                            <th>Order No</th>
+                                            <th>WholeSaler</th>
+                                            <th>Product</th>
+                                            <th>Quantity</th>
+                                            <th>Total</th>
+                                            <th>OrderDate</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            if (item.Status == 2)
+                                            {
+                                                <tr>
+                                                    <td>#</td>
+                                                    <td>
+                                                        @item.OrderNo
+                                                    </td>
+                                                    <td><a>@item.WholeSaler</a></td>
+                                                    <td><a>@item.Product</a></td>
+                                                    <td>@item.Qty</td>
+                                                    <td>@item.TotalPaid</td>
+                                                    <td>@item.OrderDate</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-success btn-xs">Pending</button>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--Resources Reference-->
+<script src="~/js/supplier/bootstrap.min.js"></script>
+<!-- chart js -->
+<script src="~/js/supplier/chartjs/chart.min.js"></script>
+<!-- bootstrap progress js -->
+<script src="~/js/supplier/progressbar/bootstrap-progressbar.min.js"></script>
+<script src="~/js/supplier/nicescroll/jquery.nicescroll.min.js"></script>
+<!-- icheck -->
+<script src="~/js/supplier/icheck/icheck.min.js"></script>
+<script src="~/js/supplier/custom.js"></script>

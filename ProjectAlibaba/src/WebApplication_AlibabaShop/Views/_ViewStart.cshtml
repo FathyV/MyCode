@@ -1,0 +1,26 @@
+﻿@{
+    string controller = ViewContext.RouteData.Values["controller"].ToString();
+    if (controller == "admin")
+    {
+        Layout = "_AdminLayout";
+    }
+    else if (controller == "guest")
+    {
+
+        Layout = "_GuestLayout";
+    }
+    else if (controller == "supplier")
+    {
+
+        Layout = "_SupplierLayout";
+    }
+    else if (controller == "wholesaler")
+    {
+
+        Layout = "_WholeSalerLayout";
+    }
+    else
+    {
+        Layout = "_Layout";
+    }
+}

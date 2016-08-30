@@ -1,0 +1,334 @@
+﻿@model WebApplication_AlibabaShop.ViewModels.SupplierProductDetailsViewModel
+<script src="~/lib/supplier/myScript.js"></script>
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>E-commerce :: Product Page</h3>
+        </div>
+
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>E-commerce page design</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a href="#"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#">Settings 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="col-md-7 col-sm-7 col-xs-12">
+                        <div class="product-image">
+                            <img width="400" height="600" src="~/images/supplier/@Model.product.Image" alt="..." />
+                        </div>
+
+                        <div>
+                            <form asp-controller="supplier" method="post" asp-action="UpdateProductImage" asp-route-id="@Model.product.Id" enctype="multipart/form-data">
+                                <div class="item form-group">
+                                    <div><input type="file" required class="form-control col-md-7 col-xs-12" name="files" id="files" /></div>
+                                </div>
+                                <div class="ln_solid"></div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-md-offset-3">
+                                        <button id="send" type="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-5 col-xs-12" style="border:0px solid #e5e5e5;">
+                        <h3 class="prod_title">@Model.product.ProductName</h3>
+                        <form asp-controller="Supplier" asp-action="UpdateProduct" method="post" class="form-horizontal form-label-left">
+                            <input asp-for="@Model.product.ProductName" type="hidden" />
+                            <input asp-for="@Model.product.Id" type="hidden" />
+                            <input asp-for="@Model.product.Supplier_Id" type="hidden" />
+
+                            <!--Description-->
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Description: <span class="required">*</span>
+                                </label>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <textarea asp-for="@Model.product.Description" required require-error="ABC" class="form-control col-md-7 col-xs-12">@Model.product.Description</textarea>
+                                </div>
+                            </div>
+                            <!--Price-->
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Price<span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input asp-for="@Model.product.Price" type="number" required data-validate-minmax="1,10000" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <!--Discount-->
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Discount<span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input asp-for="@Model.product.Discount" type="number" required data-validate-minmax="0,100" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <!--QtyInHand-->
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Quantity In Hand<span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input asp-for="@Model.product.QtyInHand" type="number" required data-validate-minmax="1,10000" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <!--Mininum Order Item-->
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Minimum Order <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input asp-for="@Model.product.MinimumOrder" type="number" required data-validate-minmax="1,10000" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <!--Maximum Order Item-->
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Maximum Order <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="number" asp-for="@Model.product.MaximumOrder" required data-validate-minmax="1,10000" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <!--Category-->
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Category</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <select asp-for="@Model.product.Category_Id" asp-items="@(new SelectList(Model.categories,"Id","Name"))" class="form-control"></select>
+                                </div>
+                            </div>
+                            <!--Status-->
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Status</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input asp-for="@Model.product.Status" type="hidden" value="@Model.product.Status" />
+                                    @if (Model.product.Status == 0)
+                                    {
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">On Sale</label>
+                                    }
+                                    else if (Model.product.Status == 1)
+                                    {
+                                        <div>Out of Stock</div>
+                                    }
+                                    else
+                                    {
+                                        <div>Removed</div>
+                                    }
+                                </div>
+                            </div>
+                            <!--Views-->
+                            <input asp-for="@Model.product.Views" type="hidden" />
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Views: </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div><label class="control-label col-md-3 col-sm-3 col-xs-12">@Model.product.Views</label></div>
+                                </div>
+                            </div>
+                            <!--Post Date-->
+                            <input asp-for="@Model.product.PostDate" type="hidden" />
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Views: </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div><label class="control-label col-md-3 col-sm-3 col-xs-12">@Model.product.PostDate.ToString("dd-mm-yyyy")</label></div>
+                                </div>
+                            </div>
+                            <!--Image-->
+                            <input asp-for="@Model.product.Image" type="hidden" />
+                            <!--Action-->
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <button id="send" type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <div class="col-md-12">
+
+                        <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Pending Order</a>
+                                </li>
+                                <li role="presentation" class="">
+                                    <a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Feedback</a>
+                                </li>
+                                <li role="presentation" class="">
+                                    <a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Pending Quotation</a>
+                                </li>
+                            </ul>
+                            <div id="myTabContent" class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                                    <!--Order-->
+                                    @{ int iCountOrder = 0;}
+                                    <table class="table table-striped projects">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 1%">#</th>
+                                                <th>Order No</th>
+                                                <th>WholeSaler</th>
+                                                <th>Product</th>
+                                                <th>Quantity</th>
+                                                <th>Total</th>
+                                                <th>OrderDate</th>
+                                                <th>Status</th>
+                                                <th style="width: 20%">#Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.orders)
+                                            {
+                                                if (item.Status == 0)
+                                                {
+                                                    <tr>
+                                                        <td>#</td>
+                                                        <td>
+                                                            @item.OrderNo
+                                                        </td>
+                                                        <td><a>@item.WholeSaler</a></td>
+                                                        <td><a>@item.Product</a></td>
+                                                        <td>@item.Qty</td>
+                                                        <td>@item.TotalPaid</td>
+                                                        <td>@item.OrderDate</td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-success btn-xs">Pending</button>
+                                                        </td>
+                                                        <td>
+                                                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Accept </a>
+                                                            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Abort </a>
+                                                        </td>
+                                                    </tr>
+                                                    iCountOrder++;
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                    @if (iCountOrder == 0)
+                                    {
+                                        <p style="color:#ff0000;margin-left:auto;margin-right:auto"><strong>No Data</strong></p>
+                                    }
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                                    <!--Feedback-->
+                                    <div>
+
+                                        <h4>Product Feedbacks</h4>
+                                        @{ int iCountFeedBack = 0;}
+                                        @foreach (var item in Model.feedbacks)
+                                        {
+                                            <!-- end of user messages -->
+                                            <ul class="messages">
+                                                <li>
+                                                    <img src="~/images/supplier/img.jpg" class="avatar" alt="Avatar">
+                                                    <div class="message_date">
+                                                        <h3 class="date text-info">@item.PostTime.Day</h3>
+                                                        <p class="month">@item.PostTime.ToString("MMMM")</p>
+                                                    </div>
+                                                    <div class="message_wrapper">
+                                                        <h4 class="heading">@item.WholeSaler</h4>
+                                                        <blockquote class="message">@item.Feedback</blockquote>
+                                                        <br />
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            iCountFeedBack++;
+                                        }
+                                        <!-- end of user messages -->
+                                        @if (iCountFeedBack == 0)
+                                        {
+                                            <p style="color:#ff0000;margin-left:auto;margin-right:auto"><strong>No Data</strong></p>
+                                        }
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+                                    <!--Quotation-->
+                                    @{ int iCountQuotation = 0;}
+                                    <table class="table table-striped projects">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 1%">#</th>
+                                                <th>WholeSaler</th>
+                                                <th>Product</th>
+                                                <th>Quantity</th>
+                                                <th>Request Date</th>
+                                                <th>Status</th>
+                                                <th style="width: 20%">#Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.quotations)
+                                            {
+                                                if (item.Status == 0)
+                                                {
+                                                    <tr>
+                                                        <td>#</td>
+                                                        <td><a>@item.WholeSaler</a></td>
+                                                        <td><a>@item.Product</a></td>
+                                                        <td>@item.Qty</td>
+                                                        <td>@item.RequestDate</td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-success btn-xs">Pending</button>
+                                                        </td>
+                                                        <td>
+                                                            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Accept </a>
+                                                            <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Abort </a>
+                                                        </td>
+                                                    </tr>
+                                                    iCountQuotation++;
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                    @if (iCountQuotation == 0)
+                                    {
+                                        <p style="color:#ff0000;margin-left:auto;margin-right:auto"><strong>No Data</strong></p>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

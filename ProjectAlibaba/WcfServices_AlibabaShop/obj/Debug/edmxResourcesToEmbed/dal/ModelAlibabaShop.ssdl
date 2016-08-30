@@ -1,0 +1,1207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AlibabaShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Administrator">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Gender" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="BirthDate" Type="date" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhoneNumber" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="Avatar" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="PId" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="WholeSaler_Id" Type="uniqueidentifier" />
+    <Property Name="Supplier_Id" Type="uniqueidentifier" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="char" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RegionCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Harbor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Country_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ownership">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Supplier_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Category_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="ntext" Nullable="false" />
+    <Property Name="Description" Type="ntext" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="MinimumOrder" Type="int" Nullable="false" />
+    <Property Name="MaximumOrder" Type="int" Nullable="false" />
+    <Property Name="QtyInHand" Type="int" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="Discount" Type="int" />
+    <Property Name="Views" Type="int" Nullable="false" />
+    <Property Name="PostDate" Type="date" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductFeedback">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Product_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="WholeSaler_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Feedback" Type="ntext" Nullable="false" />
+    <Property Name="PostTime" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PurchaseOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Suplier_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Product_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="WholeSaler_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ShipMethod_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Qty" Type="int" Nullable="false" />
+    <Property Name="UnitMeasure_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TotalPaid" Type="money" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="ArrivedDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="OrderNo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Quotation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Product_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Supplier_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="WholeSaler_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UnitMeasure_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Qty" Type="int" Nullable="false" />
+    <Property Name="Message" Type="ntext" Nullable="false" />
+    <Property Name="FileAttachment" Type="varchar" MaxLength="100" />
+    <Property Name="UnitPrice" Type="money" />
+    <Property Name="TaxAmount" Type="money" />
+    <Property Name="SubTotal" Type="money" />
+    <Property Name="Total" Type="money" />
+    <Property Name="RequestDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShipMethod">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="ntext" Nullable="false" />
+    <Property Name="Description" Type="ntext" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Country_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Ownership_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Employees" Type="int" Nullable="false" />
+    <Property Name="EstablishedYear" Type="int" Nullable="false" />
+    <Property Name="RegisterDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="Revenue" Type="money" Nullable="false" />
+    <Property Name="Email" Type="ntext" Nullable="false" />
+    <Property Name="Logo" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UnitMeasure">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WholeSaler">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="ntext" Nullable="false" />
+    <Property Name="Ownership_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="ntext" Nullable="false" />
+    <Property Name="Country_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RegisterDate" Type="date" Nullable="false" />
+    <Property Name="Email" Type="ntext" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_Category' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Category">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PId" Type="uniqueidentifier" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Main Category" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_Products' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Products">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="CategoryId" />
+      <PropertyRef Name="Category" />
+      <PropertyRef Name="Description" />
+      <PropertyRef Name="SupplierId" />
+      <PropertyRef Name="Supplier" />
+      <PropertyRef Name="Price" />
+      <PropertyRef Name="MinimumOrder" />
+      <PropertyRef Name="MaximumOrder" />
+      <PropertyRef Name="QtyInHand" />
+      <PropertyRef Name="Status" />
+      <PropertyRef Name="Views" />
+      <PropertyRef Name="PostDate" />
+      <PropertyRef Name="Image" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="ntext" Nullable="false" />
+    <Property Name="CategoryId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="ntext" Nullable="false" />
+    <Property Name="SupplierId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Supplier" Type="ntext" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="MinimumOrder" Type="int" Nullable="false" />
+    <Property Name="MaximumOrder" Type="int" Nullable="false" />
+    <Property Name="QtyInHand" Type="int" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="Views" Type="int" Nullable="false" />
+    <Property Name="PostDate" Type="date" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_ProductTop10' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_ProductTop10">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Supplier_Id" />
+      <PropertyRef Name="Category_Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Description" />
+      <PropertyRef Name="Price" />
+      <PropertyRef Name="MinimumOrder" />
+      <PropertyRef Name="MaximumOrder" />
+      <PropertyRef Name="QtyInHand" />
+      <PropertyRef Name="Status" />
+      <PropertyRef Name="Views" />
+      <PropertyRef Name="PostDate" />
+      <PropertyRef Name="Image" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Supplier_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Category_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="ntext" Nullable="false" />
+    <Property Name="Description" Type="ntext" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="MinimumOrder" Type="int" Nullable="false" />
+    <Property Name="MaximumOrder" Type="int" Nullable="false" />
+    <Property Name="QtyInHand" Type="int" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="Discount" Type="int" />
+    <Property Name="Views" Type="int" Nullable="false" />
+    <Property Name="PostDate" Type="date" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_PurchaseOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_PurchaseOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="SupplierId" />
+      <PropertyRef Name="Supplier" />
+      <PropertyRef Name="Product" />
+      <PropertyRef Name="WholeSalerId" />
+      <PropertyRef Name="WholeSaler" />
+      <PropertyRef Name="ShipMethod" />
+      <PropertyRef Name="Qty" />
+      <PropertyRef Name="UnitMeasure" />
+      <PropertyRef Name="TotalPaid" />
+      <PropertyRef Name="OrderDate" />
+      <PropertyRef Name="ArrivedDate" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SupplierId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Supplier" Type="ntext" Nullable="false" />
+    <Property Name="Product" Type="ntext" Nullable="false" />
+    <Property Name="WholeSalerId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="WholeSaler" Type="ntext" Nullable="false" />
+    <Property Name="ShipMethod" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Qty" Type="int" Nullable="false" />
+    <Property Name="UnitMeasure" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TotalPaid" Type="money" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="ArrivedDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="OrderNo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_SupplierBasicInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_SupplierBasicInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Supplier Name" />
+      <PropertyRef Name="Ownership" />
+      <PropertyRef Name="Revenue" />
+      <PropertyRef Name="Logo" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Supplier Name" Type="ntext" Nullable="false" />
+    <Property Name="Ownership" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Revenue" Type="money" Nullable="false" />
+    <Property Name="Logo" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_SupplierContact' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_SupplierContact">
+    <Key>
+      <PropertyRef Name="Email" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Phone" />
+      <PropertyRef Name="Address" />
+    </Key>
+    <Property Name="Supplier_Id" Type="uniqueidentifier" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_SupplierFeedback' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_SupplierFeedback">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Product_Id" />
+      <PropertyRef Name="WholeSaler_Id" />
+      <PropertyRef Name="WholeSaler" />
+      <PropertyRef Name="Product" />
+      <PropertyRef Name="Feedback" />
+      <PropertyRef Name="PostTime" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Product_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="WholeSaler_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="WholeSaler" Type="ntext" Nullable="false" />
+    <Property Name="Product" Type="ntext" Nullable="false" />
+    <Property Name="Feedback" Type="ntext" Nullable="false" />
+    <Property Name="PostTime" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_SupplierForAdmin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_SupplierForAdmin">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Supplier Name" />
+      <PropertyRef Name="Country" />
+      <PropertyRef Name="Ownership" />
+      <PropertyRef Name="EstablishedYear" />
+      <PropertyRef Name="RegisterDate" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Supplier Name" Type="ntext" Nullable="false" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ownership" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EstablishedYear" Type="int" Nullable="false" />
+    <Property Name="RegisterDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_SupplierInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_SupplierInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Ownership_Id" />
+      <PropertyRef Name="Country_Id" />
+      <PropertyRef Name="Supplier Name" />
+      <PropertyRef Name="Address" />
+      <PropertyRef Name="Country" />
+      <PropertyRef Name="Ownership" />
+      <PropertyRef Name="Employees" />
+      <PropertyRef Name="EstablishedYear" />
+      <PropertyRef Name="Revenue" />
+      <PropertyRef Name="Logo" />
+      <PropertyRef Name="RegisterDate" />
+      <PropertyRef Name="Status" />
+      <PropertyRef Name="Email" />
+      <PropertyRef Name="Description" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Ownership_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Country_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Supplier Name" Type="ntext" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ownership" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Employees" Type="int" Nullable="false" />
+    <Property Name="EstablishedYear" Type="int" Nullable="false" />
+    <Property Name="Revenue" Type="money" Nullable="false" />
+    <Property Name="Logo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="RegisterDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="Email" Type="ntext" Nullable="false" />
+    <Property Name="Description" Type="ntext" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_SupplierOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_SupplierOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Suplier_Id" />
+      <PropertyRef Name="Product_Id" />
+      <PropertyRef Name="WholeSaler_Id" />
+      <PropertyRef Name="ShipMethod_Id" />
+      <PropertyRef Name="UnitMeasure_Id" />
+      <PropertyRef Name="Supplier" />
+      <PropertyRef Name="Product" />
+      <PropertyRef Name="UnitMeasure" />
+      <PropertyRef Name="ShipMethod" />
+      <PropertyRef Name="WholeSaler" />
+      <PropertyRef Name="Qty" />
+      <PropertyRef Name="TotalPaid" />
+      <PropertyRef Name="OrderDate" />
+      <PropertyRef Name="ArrivedDate" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Suplier_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Product_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="WholeSaler_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ShipMethod_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UnitMeasure_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Supplier" Type="ntext" Nullable="false" />
+    <Property Name="Product" Type="ntext" Nullable="false" />
+    <Property Name="UnitMeasure" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ShipMethod" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="WholeSaler" Type="ntext" Nullable="false" />
+    <Property Name="Qty" Type="int" Nullable="false" />
+    <Property Name="TotalPaid" Type="money" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="ArrivedDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="OrderNo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_SupplierProducts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_SupplierProducts">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Supplier_Id" />
+      <PropertyRef Name="Category_Id" />
+      <PropertyRef Name="ProductName" />
+      <PropertyRef Name="CategoryName" />
+      <PropertyRef Name="SupplierName" />
+      <PropertyRef Name="Description" />
+      <PropertyRef Name="Price" />
+      <PropertyRef Name="MaximumOrder" />
+      <PropertyRef Name="MinimumOrder" />
+      <PropertyRef Name="QtyInHand" />
+      <PropertyRef Name="Status" />
+      <PropertyRef Name="Views" />
+      <PropertyRef Name="PostDate" />
+      <PropertyRef Name="Image" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Supplier_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Category_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductName" Type="ntext" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="SupplierName" Type="ntext" Nullable="false" />
+    <Property Name="Description" Type="ntext" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="MaximumOrder" Type="int" Nullable="false" />
+    <Property Name="MinimumOrder" Type="int" Nullable="false" />
+    <Property Name="QtyInHand" Type="int" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="Views" Type="int" Nullable="false" />
+    <Property Name="PostDate" Type="date" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Discount" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_SupplierQuotation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_SupplierQuotation">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Supplier_Id" />
+      <PropertyRef Name="Product_Id" />
+      <PropertyRef Name="WholeSaler_Id" />
+      <PropertyRef Name="UnitMeasure_Id" />
+      <PropertyRef Name="Supplier" />
+      <PropertyRef Name="Product" />
+      <PropertyRef Name="UnitMeasure" />
+      <PropertyRef Name="WholeSaler" />
+      <PropertyRef Name="Qty" />
+      <PropertyRef Name="RequestDate" />
+      <PropertyRef Name="Status" />
+      <PropertyRef Name="Message" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Supplier_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Product_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="WholeSaler_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UnitMeasure_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Supplier" Type="ntext" Nullable="false" />
+    <Property Name="Product" Type="ntext" Nullable="false" />
+    <Property Name="UnitMeasure" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="WholeSaler" Type="ntext" Nullable="false" />
+    <Property Name="Qty" Type="int" Nullable="false" />
+    <Property Name="Total" Type="money" />
+    <Property Name="SubTotal" Type="money" />
+    <Property Name="RequestDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" />
+    <Property Name="TaxAmount" Type="money" />
+    <Property Name="Message" Type="ntext" Nullable="false" />
+    <Property Name="FileAttachment" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_SupplierRevenue' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_SupplierRevenue">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Revenue" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="ntext" Nullable="false" />
+    <Property Name="Revenue" Type="money" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_Transaction' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Transaction">
+    <Key>
+      <PropertyRef Name="Order Id" />
+      <PropertyRef Name="Product Id" />
+      <PropertyRef Name="Suplier_Id" />
+      <PropertyRef Name="WholeSaler_Id" />
+      <PropertyRef Name="Product Name" />
+      <PropertyRef Name="OrderDate" />
+      <PropertyRef Name="TotalPaid" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="Order Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Product Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Suplier_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="WholeSaler_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Product Name" Type="ntext" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="TotalPaid" Type="money" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_Wholesaler' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_Wholesaler">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Ownership" />
+      <PropertyRef Name="Address" />
+      <PropertyRef Name="Country" />
+      <PropertyRef Name="RegisterDate" />
+      <PropertyRef Name="Email" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="ntext" Nullable="false" />
+    <Property Name="Ownership" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RegisterDate" Type="date" Nullable="false" />
+    <Property Name="Email" Type="ntext" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Category_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Category1" Type="Self.Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Category1">
+        <PropertyRef Name="PId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Harbor_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="Harbor" Type="Self.Harbor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Harbor">
+        <PropertyRef Name="Country_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Category_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Supplier">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Supplier_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductFeedback_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductFeedback" Type="Self.ProductFeedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductFeedback">
+        <PropertyRef Name="Product_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductFeedback_WholeSaler">
+    <End Role="WholeSaler" Type="Self.WholeSaler" Multiplicity="1" />
+    <End Role="ProductFeedback" Type="Self.ProductFeedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WholeSaler">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductFeedback">
+        <PropertyRef Name="WholeSaler_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurchaseOrder_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PurchaseOrder">
+        <PropertyRef Name="Product_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurchaseOrder_ShipMethod">
+    <End Role="ShipMethod" Type="Self.ShipMethod" Multiplicity="1" />
+    <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShipMethod">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PurchaseOrder">
+        <PropertyRef Name="ShipMethod_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurchaseOrder_Supplier">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+    <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PurchaseOrder">
+        <PropertyRef Name="Suplier_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurchaseOrder_UnitMeasure">
+    <End Role="UnitMeasure" Type="Self.UnitMeasure" Multiplicity="1" />
+    <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UnitMeasure">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PurchaseOrder">
+        <PropertyRef Name="UnitMeasure_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurchaseOrder_WholeSaler">
+    <End Role="WholeSaler" Type="Self.WholeSaler" Multiplicity="1" />
+    <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WholeSaler">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PurchaseOrder">
+        <PropertyRef Name="WholeSaler_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quotation_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Quotation">
+        <PropertyRef Name="Product_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quotation_Supplier">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+    <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Quotation">
+        <PropertyRef Name="Supplier_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quotation_UnitMeasure">
+    <End Role="UnitMeasure" Type="Self.UnitMeasure" Multiplicity="1" />
+    <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UnitMeasure">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Quotation">
+        <PropertyRef Name="UnitMeasure_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quotation_WholeSaler">
+    <End Role="WholeSaler" Type="Self.WholeSaler" Multiplicity="1" />
+    <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WholeSaler">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Quotation">
+        <PropertyRef Name="WholeSaler_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supplier_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Supplier">
+        <PropertyRef Name="Country_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supplier_Ownership">
+    <End Role="Ownership" Type="Self.Ownership" Multiplicity="1" />
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ownership">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Supplier">
+        <PropertyRef Name="Ownership_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WholeSaler_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="WholeSaler" Type="Self.WholeSaler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WholeSaler">
+        <PropertyRef Name="Country_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="country_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="country_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="RegionCode" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="country_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="RegionCode" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="fCreateOrderNo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar" />
+  <Function Name="harbor_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="harbor_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="text" Mode="In" />
+    <Parameter Name="Country_Id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Status" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="harbor_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Name" Type="text" Mode="In" />
+    <Parameter Name="Country_Id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Status" Type="tinyint" Mode="In" />
+  </Function>
+  <Function Name="shipMethod_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="shipMethod_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="text" Mode="In" />
+  </Function>
+  <Function Name="shipMethod_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Name" Type="text" Mode="In" />
+  </Function>
+  <Function Name="sp_CreateCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="PId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="sp_CreateProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Supplier_Id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Category_Id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Name" Type="ntext" Mode="In" />
+    <Parameter Name="Description" Type="ntext" Mode="In" />
+    <Parameter Name="Price" Type="money" Mode="In" />
+    <Parameter Name="MiniumOrder" Type="int" Mode="In" />
+    <Parameter Name="MaximumOrder" Type="int" Mode="In" />
+    <Parameter Name="QtyInHand" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="tinyint" Mode="In" />
+    <Parameter Name="Views" Type="int" Mode="In" />
+    <Parameter Name="PostDate" Type="date" Mode="In" />
+    <Parameter Name="Image" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_CreateUnitMeasure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_DeleteCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="sp_DeleteProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="sp_DeleteUnitMeasure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="sp_UpdateCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="PId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="sp_UpdateProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Supplier_Id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Category_Id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Name" Type="ntext" Mode="In" />
+    <Parameter Name="Description" Type="ntext" Mode="In" />
+    <Parameter Name="Price" Type="money" Mode="In" />
+    <Parameter Name="MiniumOrder" Type="int" Mode="In" />
+    <Parameter Name="MaximumOrder" Type="int" Mode="In" />
+    <Parameter Name="QtyInHand" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="tinyint" Mode="In" />
+    <Parameter Name="Views" Type="int" Mode="In" />
+    <Parameter Name="PostDate" Type="date" Mode="In" />
+    <Parameter Name="Image" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_UpdateUnitMeasure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Suppiler_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Name" Type="ntext" Mode="In" />
+    <Parameter Name="Description" Type="ntext" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="Country_Id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Ownership" Type="ntext" Mode="In" />
+    <Parameter Name="Employees" Type="int" Mode="In" />
+    <Parameter Name="BusinessType" Type="ntext" Mode="In" />
+    <Parameter Name="EstablishedYear" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="tinyint" Mode="In" />
+    <Parameter Name="Revenue" Type="money" Mode="In" />
+    <Parameter Name="Email" Type="ntext" Mode="In" />
+    <Parameter Name="Logo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Supplier_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="Supplier_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="ntext" Mode="In" />
+    <Parameter Name="Description" Type="ntext" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="Country_Id" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="Ownership" Type="ntext" Mode="In" />
+    <Parameter Name="Employees" Type="int" Mode="In" />
+    <Parameter Name="BusinessType" Type="ntext" Mode="In" />
+    <Parameter Name="EstablishedYear" Type="int" Mode="In" />
+    <Parameter Name="Status" Type="tinyint" Mode="In" />
+    <Parameter Name="Revenue" Type="money" Mode="In" />
+    <Parameter Name="Email" Type="ntext" Mode="In" />
+    <Parameter Name="Logo" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="AlibabaShopModelStoreContainer">
+    <EntitySet Name="Administrator" EntityType="Self.Administrator" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Harbor" EntityType="Self.Harbor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ownership" EntityType="Self.Ownership" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductFeedback" EntityType="Self.ProductFeedback" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PurchaseOrder" EntityType="Self.PurchaseOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Quotation" EntityType="Self.Quotation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShipMethod" EntityType="Self.ShipMethod" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UnitMeasure" EntityType="Self.UnitMeasure" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WholeSaler" EntityType="Self.WholeSaler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vw_Category" EntityType="Self.vw_Category" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Category].[Id] AS [Id], 
+    [vw_Category].[PId] AS [PId], 
+    [vw_Category].[Name] AS [Name], 
+    [vw_Category].[Main Category] AS [Main Category]
+    FROM [dbo].[vw_Category] AS [vw_Category]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Products" EntityType="Self.vw_Products" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Products].[Id] AS [Id], 
+    [vw_Products].[Name] AS [Name], 
+    [vw_Products].[CategoryId] AS [CategoryId], 
+    [vw_Products].[Category] AS [Category], 
+    [vw_Products].[Description] AS [Description], 
+    [vw_Products].[SupplierId] AS [SupplierId], 
+    [vw_Products].[Supplier] AS [Supplier], 
+    [vw_Products].[Price] AS [Price], 
+    [vw_Products].[MinimumOrder] AS [MinimumOrder], 
+    [vw_Products].[MaximumOrder] AS [MaximumOrder], 
+    [vw_Products].[QtyInHand] AS [QtyInHand], 
+    [vw_Products].[Status] AS [Status], 
+    [vw_Products].[Views] AS [Views], 
+    [vw_Products].[PostDate] AS [PostDate], 
+    [vw_Products].[Image] AS [Image]
+    FROM [dbo].[vw_Products] AS [vw_Products]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_ProductTop10" EntityType="Self.vw_ProductTop10" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_ProductTop10].[Id] AS [Id], 
+    [vw_ProductTop10].[Supplier_Id] AS [Supplier_Id], 
+    [vw_ProductTop10].[Category_Id] AS [Category_Id], 
+    [vw_ProductTop10].[Name] AS [Name], 
+    [vw_ProductTop10].[Description] AS [Description], 
+    [vw_ProductTop10].[Price] AS [Price], 
+    [vw_ProductTop10].[MinimumOrder] AS [MinimumOrder], 
+    [vw_ProductTop10].[MaximumOrder] AS [MaximumOrder], 
+    [vw_ProductTop10].[QtyInHand] AS [QtyInHand], 
+    [vw_ProductTop10].[Status] AS [Status], 
+    [vw_ProductTop10].[Discount] AS [Discount], 
+    [vw_ProductTop10].[Views] AS [Views], 
+    [vw_ProductTop10].[PostDate] AS [PostDate], 
+    [vw_ProductTop10].[Image] AS [Image]
+    FROM [dbo].[vw_ProductTop10] AS [vw_ProductTop10]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_PurchaseOrder" EntityType="Self.vw_PurchaseOrder" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_PurchaseOrder].[Id] AS [Id], 
+    [vw_PurchaseOrder].[SupplierId] AS [SupplierId], 
+    [vw_PurchaseOrder].[Supplier] AS [Supplier], 
+    [vw_PurchaseOrder].[Product] AS [Product], 
+    [vw_PurchaseOrder].[WholeSalerId] AS [WholeSalerId], 
+    [vw_PurchaseOrder].[WholeSaler] AS [WholeSaler], 
+    [vw_PurchaseOrder].[ShipMethod] AS [ShipMethod], 
+    [vw_PurchaseOrder].[Qty] AS [Qty], 
+    [vw_PurchaseOrder].[UnitMeasure] AS [UnitMeasure], 
+    [vw_PurchaseOrder].[TotalPaid] AS [TotalPaid], 
+    [vw_PurchaseOrder].[OrderDate] AS [OrderDate], 
+    [vw_PurchaseOrder].[ArrivedDate] AS [ArrivedDate], 
+    [vw_PurchaseOrder].[Status] AS [Status], 
+    [vw_PurchaseOrder].[OrderNo] AS [OrderNo]
+    FROM [dbo].[vw_PurchaseOrder] AS [vw_PurchaseOrder]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_SupplierBasicInfo" EntityType="Self.vw_SupplierBasicInfo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_SupplierBasicInfo].[Id] AS [Id], 
+    [vw_SupplierBasicInfo].[Supplier Name] AS [Supplier Name], 
+    [vw_SupplierBasicInfo].[Ownership] AS [Ownership], 
+    [vw_SupplierBasicInfo].[Revenue] AS [Revenue], 
+    [vw_SupplierBasicInfo].[Logo] AS [Logo]
+    FROM [dbo].[vw_SupplierBasicInfo] AS [vw_SupplierBasicInfo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_SupplierContact" EntityType="Self.vw_SupplierContact" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_SupplierContact].[Supplier_Id] AS [Supplier_Id], 
+    [vw_SupplierContact].[Email] AS [Email], 
+    [vw_SupplierContact].[Name] AS [Name], 
+    [vw_SupplierContact].[Phone] AS [Phone], 
+    [vw_SupplierContact].[Address] AS [Address]
+    FROM [dbo].[vw_SupplierContact] AS [vw_SupplierContact]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_SupplierFeedback" EntityType="Self.vw_SupplierFeedback" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_SupplierFeedback].[Id] AS [Id], 
+    [vw_SupplierFeedback].[Product_Id] AS [Product_Id], 
+    [vw_SupplierFeedback].[WholeSaler_Id] AS [WholeSaler_Id], 
+    [vw_SupplierFeedback].[WholeSaler] AS [WholeSaler], 
+    [vw_SupplierFeedback].[Product] AS [Product], 
+    [vw_SupplierFeedback].[Feedback] AS [Feedback], 
+    [vw_SupplierFeedback].[PostTime] AS [PostTime], 
+    [vw_SupplierFeedback].[Status] AS [Status]
+    FROM [dbo].[vw_SupplierFeedback] AS [vw_SupplierFeedback]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_SupplierForAdmin" EntityType="Self.vw_SupplierForAdmin" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_SupplierForAdmin].[Id] AS [Id], 
+    [vw_SupplierForAdmin].[Supplier Name] AS [Supplier Name], 
+    [vw_SupplierForAdmin].[Country] AS [Country], 
+    [vw_SupplierForAdmin].[Ownership] AS [Ownership], 
+    [vw_SupplierForAdmin].[EstablishedYear] AS [EstablishedYear], 
+    [vw_SupplierForAdmin].[RegisterDate] AS [RegisterDate], 
+    [vw_SupplierForAdmin].[Status] AS [Status]
+    FROM [dbo].[vw_SupplierForAdmin] AS [vw_SupplierForAdmin]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_SupplierInfo" EntityType="Self.vw_SupplierInfo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_SupplierInfo].[Id] AS [Id], 
+    [vw_SupplierInfo].[Ownership_Id] AS [Ownership_Id], 
+    [vw_SupplierInfo].[Country_Id] AS [Country_Id], 
+    [vw_SupplierInfo].[Supplier Name] AS [Supplier Name], 
+    [vw_SupplierInfo].[Address] AS [Address], 
+    [vw_SupplierInfo].[Country] AS [Country], 
+    [vw_SupplierInfo].[Ownership] AS [Ownership], 
+    [vw_SupplierInfo].[Employees] AS [Employees], 
+    [vw_SupplierInfo].[EstablishedYear] AS [EstablishedYear], 
+    [vw_SupplierInfo].[Revenue] AS [Revenue], 
+    [vw_SupplierInfo].[Logo] AS [Logo], 
+    [vw_SupplierInfo].[RegisterDate] AS [RegisterDate], 
+    [vw_SupplierInfo].[Status] AS [Status], 
+    [vw_SupplierInfo].[Email] AS [Email], 
+    [vw_SupplierInfo].[Description] AS [Description]
+    FROM [dbo].[vw_SupplierInfo] AS [vw_SupplierInfo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_SupplierOrder" EntityType="Self.vw_SupplierOrder" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_SupplierOrder].[Id] AS [Id], 
+    [vw_SupplierOrder].[Suplier_Id] AS [Suplier_Id], 
+    [vw_SupplierOrder].[Product_Id] AS [Product_Id], 
+    [vw_SupplierOrder].[WholeSaler_Id] AS [WholeSaler_Id], 
+    [vw_SupplierOrder].[ShipMethod_Id] AS [ShipMethod_Id], 
+    [vw_SupplierOrder].[UnitMeasure_Id] AS [UnitMeasure_Id], 
+    [vw_SupplierOrder].[Supplier] AS [Supplier], 
+    [vw_SupplierOrder].[Product] AS [Product], 
+    [vw_SupplierOrder].[UnitMeasure] AS [UnitMeasure], 
+    [vw_SupplierOrder].[ShipMethod] AS [ShipMethod], 
+    [vw_SupplierOrder].[WholeSaler] AS [WholeSaler], 
+    [vw_SupplierOrder].[Qty] AS [Qty], 
+    [vw_SupplierOrder].[TotalPaid] AS [TotalPaid], 
+    [vw_SupplierOrder].[OrderDate] AS [OrderDate], 
+    [vw_SupplierOrder].[ArrivedDate] AS [ArrivedDate], 
+    [vw_SupplierOrder].[Status] AS [Status], 
+    [vw_SupplierOrder].[OrderNo] AS [OrderNo]
+    FROM [dbo].[vw_SupplierOrder] AS [vw_SupplierOrder]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_SupplierProducts" EntityType="Self.vw_SupplierProducts" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_SupplierProducts].[Id] AS [Id], 
+    [vw_SupplierProducts].[Supplier_Id] AS [Supplier_Id], 
+    [vw_SupplierProducts].[Category_Id] AS [Category_Id], 
+    [vw_SupplierProducts].[ProductName] AS [ProductName], 
+    [vw_SupplierProducts].[CategoryName] AS [CategoryName], 
+    [vw_SupplierProducts].[SupplierName] AS [SupplierName], 
+    [vw_SupplierProducts].[Description] AS [Description], 
+    [vw_SupplierProducts].[Price] AS [Price], 
+    [vw_SupplierProducts].[MaximumOrder] AS [MaximumOrder], 
+    [vw_SupplierProducts].[MinimumOrder] AS [MinimumOrder], 
+    [vw_SupplierProducts].[QtyInHand] AS [QtyInHand], 
+    [vw_SupplierProducts].[Status] AS [Status], 
+    [vw_SupplierProducts].[Views] AS [Views], 
+    [vw_SupplierProducts].[PostDate] AS [PostDate], 
+    [vw_SupplierProducts].[Image] AS [Image], 
+    [vw_SupplierProducts].[Discount] AS [Discount]
+    FROM [dbo].[vw_SupplierProducts] AS [vw_SupplierProducts]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_SupplierQuotation" EntityType="Self.vw_SupplierQuotation" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_SupplierQuotation].[Id] AS [Id], 
+    [vw_SupplierQuotation].[Supplier_Id] AS [Supplier_Id], 
+    [vw_SupplierQuotation].[Product_Id] AS [Product_Id], 
+    [vw_SupplierQuotation].[WholeSaler_Id] AS [WholeSaler_Id], 
+    [vw_SupplierQuotation].[UnitMeasure_Id] AS [UnitMeasure_Id], 
+    [vw_SupplierQuotation].[Supplier] AS [Supplier], 
+    [vw_SupplierQuotation].[Product] AS [Product], 
+    [vw_SupplierQuotation].[UnitMeasure] AS [UnitMeasure], 
+    [vw_SupplierQuotation].[WholeSaler] AS [WholeSaler], 
+    [vw_SupplierQuotation].[Qty] AS [Qty], 
+    [vw_SupplierQuotation].[Total] AS [Total], 
+    [vw_SupplierQuotation].[SubTotal] AS [SubTotal], 
+    [vw_SupplierQuotation].[RequestDate] AS [RequestDate], 
+    [vw_SupplierQuotation].[Status] AS [Status], 
+    [vw_SupplierQuotation].[UnitPrice] AS [UnitPrice], 
+    [vw_SupplierQuotation].[TaxAmount] AS [TaxAmount], 
+    [vw_SupplierQuotation].[Message] AS [Message], 
+    [vw_SupplierQuotation].[FileAttachment] AS [FileAttachment]
+    FROM [dbo].[vw_SupplierQuotation] AS [vw_SupplierQuotation]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_SupplierRevenue" EntityType="Self.vw_SupplierRevenue" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_SupplierRevenue].[Id] AS [Id], 
+    [vw_SupplierRevenue].[Name] AS [Name], 
+    [vw_SupplierRevenue].[Revenue] AS [Revenue]
+    FROM [dbo].[vw_SupplierRevenue] AS [vw_SupplierRevenue]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Transaction" EntityType="Self.vw_Transaction" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Transaction].[Order Id] AS [Order Id], 
+    [vw_Transaction].[Product Id] AS [Product Id], 
+    [vw_Transaction].[Suplier_Id] AS [Suplier_Id], 
+    [vw_Transaction].[WholeSaler_Id] AS [WholeSaler_Id], 
+    [vw_Transaction].[Product Name] AS [Product Name], 
+    [vw_Transaction].[OrderDate] AS [OrderDate], 
+    [vw_Transaction].[TotalPaid] AS [TotalPaid], 
+    [vw_Transaction].[Status] AS [Status]
+    FROM [dbo].[vw_Transaction] AS [vw_Transaction]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_Wholesaler" EntityType="Self.vw_Wholesaler" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_Wholesaler].[Id] AS [Id], 
+    [vw_Wholesaler].[Name] AS [Name], 
+    [vw_Wholesaler].[Ownership] AS [Ownership], 
+    [vw_Wholesaler].[Address] AS [Address], 
+    [vw_Wholesaler].[Country] AS [Country], 
+    [vw_Wholesaler].[RegisterDate] AS [RegisterDate], 
+    [vw_Wholesaler].[Email] AS [Email], 
+    [vw_Wholesaler].[Status] AS [Status]
+    FROM [dbo].[vw_Wholesaler] AS [vw_Wholesaler]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Category_Category" Association="Self.FK_Category_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Category1" EntitySet="Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Harbor_Country" Association="Self.FK_Harbor_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Harbor" EntitySet="Harbor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Supplier" Association="Self.FK_Product_Supplier">
+      <End Role="Supplier" EntitySet="Supplier" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductFeedback_Product" Association="Self.FK_ProductFeedback_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductFeedback" EntitySet="ProductFeedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductFeedback_WholeSaler" Association="Self.FK_ProductFeedback_WholeSaler">
+      <End Role="WholeSaler" EntitySet="WholeSaler" />
+      <End Role="ProductFeedback" EntitySet="ProductFeedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchaseOrder_Product" Association="Self.FK_PurchaseOrder_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchaseOrder_ShipMethod" Association="Self.FK_PurchaseOrder_ShipMethod">
+      <End Role="ShipMethod" EntitySet="ShipMethod" />
+      <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchaseOrder_Supplier" Association="Self.FK_PurchaseOrder_Supplier">
+      <End Role="Supplier" EntitySet="Supplier" />
+      <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchaseOrder_UnitMeasure" Association="Self.FK_PurchaseOrder_UnitMeasure">
+      <End Role="UnitMeasure" EntitySet="UnitMeasure" />
+      <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchaseOrder_WholeSaler" Association="Self.FK_PurchaseOrder_WholeSaler">
+      <End Role="WholeSaler" EntitySet="WholeSaler" />
+      <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quotation_Product" Association="Self.FK_Quotation_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Quotation" EntitySet="Quotation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quotation_Supplier" Association="Self.FK_Quotation_Supplier">
+      <End Role="Supplier" EntitySet="Supplier" />
+      <End Role="Quotation" EntitySet="Quotation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quotation_UnitMeasure" Association="Self.FK_Quotation_UnitMeasure">
+      <End Role="UnitMeasure" EntitySet="UnitMeasure" />
+      <End Role="Quotation" EntitySet="Quotation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quotation_WholeSaler" Association="Self.FK_Quotation_WholeSaler">
+      <End Role="WholeSaler" EntitySet="WholeSaler" />
+      <End Role="Quotation" EntitySet="Quotation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supplier_Country" Association="Self.FK_Supplier_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Supplier" EntitySet="Supplier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supplier_Ownership" Association="Self.FK_Supplier_Ownership">
+      <End Role="Ownership" EntitySet="Ownership" />
+      <End Role="Supplier" EntitySet="Supplier" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WholeSaler_Country" Association="Self.FK_WholeSaler_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="WholeSaler" EntitySet="WholeSaler" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,455 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AlibabaShopModelStoreContainer" CdmEntityContainer="AlibabaShopEntities">
+    <EntitySetMapping Name="Administrators">
+      <EntityTypeMapping TypeName="AlibabaShopModel.Administrator">
+        <MappingFragment StoreEntitySet="Administrator">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="AlibabaShopModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PId" ColumnName="PId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="AlibabaShopModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Harbors">
+      <EntityTypeMapping TypeName="AlibabaShopModel.Harbor">
+        <MappingFragment StoreEntitySet="Harbor">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Country_Id" ColumnName="Country_Id" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ownerships">
+      <EntityTypeMapping TypeName="AlibabaShopModel.Ownership">
+        <MappingFragment StoreEntitySet="Ownership">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="AlibabaShopModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Supplier_Id" ColumnName="Supplier_Id" />
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="MinimumOrder" ColumnName="MinimumOrder" />
+          <ScalarProperty Name="MaximumOrder" ColumnName="MaximumOrder" />
+          <ScalarProperty Name="QtyInHand" ColumnName="QtyInHand" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Views" ColumnName="Views" />
+          <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductFeedbacks">
+      <EntityTypeMapping TypeName="AlibabaShopModel.ProductFeedback">
+        <MappingFragment StoreEntitySet="ProductFeedback">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+          <ScalarProperty Name="WholeSaler_Id" ColumnName="WholeSaler_Id" />
+          <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+          <ScalarProperty Name="PostTime" ColumnName="PostTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PurchaseOrders">
+      <EntityTypeMapping TypeName="AlibabaShopModel.PurchaseOrder">
+        <MappingFragment StoreEntitySet="PurchaseOrder">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Suplier_Id" ColumnName="Suplier_Id" />
+          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+          <ScalarProperty Name="WholeSaler_Id" ColumnName="WholeSaler_Id" />
+          <ScalarProperty Name="ShipMethod_Id" ColumnName="ShipMethod_Id" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="UnitMeasure_Id" ColumnName="UnitMeasure_Id" />
+          <ScalarProperty Name="TotalPaid" ColumnName="TotalPaid" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="ArrivedDate" ColumnName="ArrivedDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quotations">
+      <EntityTypeMapping TypeName="AlibabaShopModel.Quotation">
+        <MappingFragment StoreEntitySet="Quotation">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+          <ScalarProperty Name="Supplier_Id" ColumnName="Supplier_Id" />
+          <ScalarProperty Name="WholeSaler_Id" ColumnName="WholeSaler_Id" />
+          <ScalarProperty Name="UnitMeasure_Id" ColumnName="UnitMeasure_Id" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="FileAttachment" ColumnName="FileAttachment" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShipMethods">
+      <EntityTypeMapping TypeName="AlibabaShopModel.ShipMethod">
+        <MappingFragment StoreEntitySet="ShipMethod">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suppliers">
+      <EntityTypeMapping TypeName="AlibabaShopModel.Supplier">
+        <MappingFragment StoreEntitySet="Supplier">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Country_Id" ColumnName="Country_Id" />
+          <ScalarProperty Name="Ownership_Id" ColumnName="Ownership_Id" />
+          <ScalarProperty Name="Employees" ColumnName="Employees" />
+          <ScalarProperty Name="EstablishedYear" ColumnName="EstablishedYear" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Revenue" ColumnName="Revenue" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UnitMeasures">
+      <EntityTypeMapping TypeName="AlibabaShopModel.UnitMeasure">
+        <MappingFragment StoreEntitySet="UnitMeasure">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WholeSalers">
+      <EntityTypeMapping TypeName="AlibabaShopModel.WholeSaler">
+        <MappingFragment StoreEntitySet="WholeSaler">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Ownership_Id" ColumnName="Ownership_Id" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Country_Id" ColumnName="Country_Id" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_SupplierBasicInfo">
+      <EntityTypeMapping TypeName="AlibabaShopModel.vw_SupplierBasicInfo">
+        <MappingFragment StoreEntitySet="vw_SupplierBasicInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Supplier_Name" ColumnName="Supplier Name" />
+          <ScalarProperty Name="Ownership" ColumnName="Ownership" />
+          <ScalarProperty Name="Revenue" ColumnName="Revenue" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_SupplierForAdmin">
+      <EntityTypeMapping TypeName="AlibabaShopModel.vw_SupplierForAdmin">
+        <MappingFragment StoreEntitySet="vw_SupplierForAdmin">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Supplier_Name" ColumnName="Supplier Name" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Ownership" ColumnName="Ownership" />
+          <ScalarProperty Name="EstablishedYear" ColumnName="EstablishedYear" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_SupplierInfo">
+      <EntityTypeMapping TypeName="AlibabaShopModel.vw_SupplierInfo">
+        <MappingFragment StoreEntitySet="vw_SupplierInfo">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Country_Id" ColumnName="Country_Id" />
+          <ScalarProperty Name="Ownership_Id" ColumnName="Ownership_Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Supplier_Name" ColumnName="Supplier Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Ownership" ColumnName="Ownership" />
+          <ScalarProperty Name="Employees" ColumnName="Employees" />
+          <ScalarProperty Name="EstablishedYear" ColumnName="EstablishedYear" />
+          <ScalarProperty Name="Revenue" ColumnName="Revenue" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_SupplierRevenue">
+      <EntityTypeMapping TypeName="AlibabaShopModel.vw_SupplierRevenue">
+        <MappingFragment StoreEntitySet="vw_SupplierRevenue">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Revenue" ColumnName="Revenue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Transaction">
+      <EntityTypeMapping TypeName="AlibabaShopModel.vw_Transaction">
+        <MappingFragment StoreEntitySet="vw_Transaction">
+          <ScalarProperty Name="Order_Id" ColumnName="Order Id" />
+          <ScalarProperty Name="Product_Id" ColumnName="Product Id" />
+          <ScalarProperty Name="Suplier_Id" ColumnName="Suplier_Id" />
+          <ScalarProperty Name="WholeSaler_Id" ColumnName="WholeSaler_Id" />
+          <ScalarProperty Name="Product_Name" ColumnName="Product Name" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="TotalPaid" ColumnName="TotalPaid" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="country_delete" FunctionName="AlibabaShopModel.Store.country_delete" />
+    <FunctionImportMapping FunctionImportName="country_insert" FunctionName="AlibabaShopModel.Store.country_insert" />
+    <FunctionImportMapping FunctionImportName="country_update" FunctionName="AlibabaShopModel.Store.country_update" />
+    <FunctionImportMapping FunctionImportName="harbor_delete" FunctionName="AlibabaShopModel.Store.harbor_delete" />
+    <FunctionImportMapping FunctionImportName="harbor_insert" FunctionName="AlibabaShopModel.Store.harbor_insert" />
+    <FunctionImportMapping FunctionImportName="harbor_update" FunctionName="AlibabaShopModel.Store.harbor_update" />
+    <FunctionImportMapping FunctionImportName="shipMethod_delete" FunctionName="AlibabaShopModel.Store.shipMethod_delete" />
+    <FunctionImportMapping FunctionImportName="shipMethod_insert" FunctionName="AlibabaShopModel.Store.shipMethod_insert" />
+    <FunctionImportMapping FunctionImportName="shipMethod_update" FunctionName="AlibabaShopModel.Store.shipMethod_update" />
+    <FunctionImportMapping FunctionImportName="sp_CreateCategory" FunctionName="AlibabaShopModel.Store.sp_CreateCategory" />
+    <FunctionImportMapping FunctionImportName="sp_CreateProduct" FunctionName="AlibabaShopModel.Store.sp_CreateProduct" />
+    <FunctionImportMapping FunctionImportName="sp_CreateUnitMeasure" FunctionName="AlibabaShopModel.Store.sp_CreateUnitMeasure" />
+    <FunctionImportMapping FunctionImportName="sp_DeleteCategory" FunctionName="AlibabaShopModel.Store.sp_DeleteCategory" />
+    <FunctionImportMapping FunctionImportName="sp_DeleteProduct" FunctionName="AlibabaShopModel.Store.sp_DeleteProduct" />
+    <FunctionImportMapping FunctionImportName="sp_DeleteUnitMeasure" FunctionName="AlibabaShopModel.Store.sp_DeleteUnitMeasure" />
+    <FunctionImportMapping FunctionImportName="sp_UpdateCategory" FunctionName="AlibabaShopModel.Store.sp_UpdateCategory" />
+    <FunctionImportMapping FunctionImportName="sp_UpdateProduct" FunctionName="AlibabaShopModel.Store.sp_UpdateProduct" />
+    <FunctionImportMapping FunctionImportName="sp_UpdateUnitMeasure" FunctionName="AlibabaShopModel.Store.sp_UpdateUnitMeasure" />
+    <FunctionImportMapping FunctionImportName="Suppiler_Update" FunctionName="AlibabaShopModel.Store.Suppiler_Update" />
+    <FunctionImportMapping FunctionImportName="Supplier_Delete" FunctionName="AlibabaShopModel.Store.Supplier_Delete" />
+    <FunctionImportMapping FunctionImportName="Supplier_Insert" FunctionName="AlibabaShopModel.Store.Supplier_Insert" />
+    <EntitySetMapping Name="vw_SupplierProducts">
+      <EntityTypeMapping TypeName="AlibabaShopModel.vw_SupplierProducts">
+        <MappingFragment StoreEntitySet="vw_SupplierProducts">
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+          <ScalarProperty Name="Views" ColumnName="Views" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="QtyInHand" ColumnName="QtyInHand" />
+          <ScalarProperty Name="MinimumOrder" ColumnName="MinimumOrder" />
+          <ScalarProperty Name="MaximumOrder" ColumnName="MaximumOrder" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="Supplier_Id" ColumnName="Supplier_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_SupplierFeedback">
+      <EntityTypeMapping TypeName="AlibabaShopModel.vw_SupplierFeedback">
+        <MappingFragment StoreEntitySet="vw_SupplierFeedback">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="PostTime" ColumnName="PostTime" />
+          <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="WholeSaler" ColumnName="WholeSaler" />
+          <ScalarProperty Name="WholeSaler_Id" ColumnName="WholeSaler_Id" />
+          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_SupplierOrder">
+      <EntityTypeMapping TypeName="AlibabaShopModel.vw_SupplierOrder">
+        <MappingFragment StoreEntitySet="vw_SupplierOrder">
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ArrivedDate" ColumnName="ArrivedDate" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="TotalPaid" ColumnName="TotalPaid" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="WholeSaler" ColumnName="WholeSaler" />
+          <ScalarProperty Name="ShipMethod" ColumnName="ShipMethod" />
+          <ScalarProperty Name="UnitMeasure" ColumnName="UnitMeasure" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+          <ScalarProperty Name="UnitMeasure_Id" ColumnName="UnitMeasure_Id" />
+          <ScalarProperty Name="ShipMethod_Id" ColumnName="ShipMethod_Id" />
+          <ScalarProperty Name="WholeSaler_Id" ColumnName="WholeSaler_Id" />
+          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+          <ScalarProperty Name="Suplier_Id" ColumnName="Suplier_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_SupplierQuotation">
+      <EntityTypeMapping TypeName="AlibabaShopModel.vw_SupplierQuotation">
+        <MappingFragment StoreEntitySet="vw_SupplierQuotation">
+          <ScalarProperty Name="FileAttachment" ColumnName="FileAttachment" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="WholeSaler" ColumnName="WholeSaler" />
+          <ScalarProperty Name="UnitMeasure" ColumnName="UnitMeasure" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+          <ScalarProperty Name="UnitMeasure_Id" ColumnName="UnitMeasure_Id" />
+          <ScalarProperty Name="WholeSaler_Id" ColumnName="WholeSaler_Id" />
+          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+          <ScalarProperty Name="Supplier_Id" ColumnName="Supplier_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Category">
+      <EntityTypeMapping TypeName="AlibabaShopModel.vw_Category">
+        <MappingFragment StoreEntitySet="vw_Category">
+          <ScalarProperty Name="Main_Category" ColumnName="Main Category" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PId" ColumnName="PId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_ProductTop10">
+      <EntityTypeMapping TypeName="AlibabaShopModel.vw_ProductTop10">
+        <MappingFragment StoreEntitySet="vw_ProductTop10">
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+          <ScalarProperty Name="Views" ColumnName="Views" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="QtyInHand" ColumnName="QtyInHand" />
+          <ScalarProperty Name="MaximumOrder" ColumnName="MaximumOrder" />
+          <ScalarProperty Name="MinimumOrder" ColumnName="MinimumOrder" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="Supplier_Id" ColumnName="Supplier_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Products">
+      <EntityTypeMapping TypeName="AlibabaShopModel.vw_Products">
+        <MappingFragment StoreEntitySet="vw_Products">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+          <ScalarProperty Name="Views" ColumnName="Views" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="QtyInHand" ColumnName="QtyInHand" />
+          <ScalarProperty Name="MaximumOrder" ColumnName="MaximumOrder" />
+          <ScalarProperty Name="MinimumOrder" ColumnName="MinimumOrder" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+          <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_PurchaseOrder">
+      <EntityTypeMapping TypeName="AlibabaShopModel.vw_PurchaseOrder">
+        <MappingFragment StoreEntitySet="vw_PurchaseOrder">
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ArrivedDate" ColumnName="ArrivedDate" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="TotalPaid" ColumnName="TotalPaid" />
+          <ScalarProperty Name="UnitMeasure" ColumnName="UnitMeasure" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ShipMethod" ColumnName="ShipMethod" />
+          <ScalarProperty Name="WholeSaler" ColumnName="WholeSaler" />
+          <ScalarProperty Name="WholeSalerId" ColumnName="WholeSalerId" />
+          <ScalarProperty Name="Product" ColumnName="Product" />
+          <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+          <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_Wholesaler">
+      <EntityTypeMapping TypeName="AlibabaShopModel.vw_Wholesaler">
+        <MappingFragment StoreEntitySet="vw_Wholesaler">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Ownership" ColumnName="Ownership" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="AlibabaShopModel.Contact">
+        <MappingFragment StoreEntitySet="Contact">
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Supplier_Id" ColumnName="Supplier_Id" />
+          <ScalarProperty Name="WholeSaler_Id" ColumnName="WholeSaler_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_SupplierContact">
+      <EntityTypeMapping TypeName="AlibabaShopModel.vw_SupplierContact">
+        <MappingFragment StoreEntitySet="vw_SupplierContact">
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Supplier_Id" ColumnName="Supplier_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

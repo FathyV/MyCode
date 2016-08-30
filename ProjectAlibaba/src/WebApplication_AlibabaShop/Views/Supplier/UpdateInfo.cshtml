@@ -1,0 +1,240 @@
+﻿@using WebApplication_AlibabaShop.ViewModels
+@model SupplierInfoViewModel
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>General Elements</h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2><i class="fa fa-bars"></i> Product <small>Manage your list</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#">Settings 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Supplier Information</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Contact Information</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#tab_content3" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Account Information</a>
+                            </li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <!--Supplier Info Form-->
+                            <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                                <form data-parsley-validate class="form-horizontal form-label-left" method="post" asp-action="UpdateSupplier" enctype="multipart/form-data">
+                                    
+                                    <input type="hidden" asp-for="@Model.supplierInfo.Id" />
+                                    <input type="hidden" asp-for="@Model.supplierInfo.Revenue" />
+                                    <input type="hidden" asp-for="@Model.supplierInfo.RegisterDate" />
+                                    <input type="hidden" asp-for="@Model.supplierInfo.Logo"/>
+                                    <input type="hidden" asp-for="@Model.supplierInfo.Status" />
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Name</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input asp-for="@Model.supplierInfo.Supplier_Name" value="@Model.supplierInfo.Supplier_Name" class="form-control col-md-7 col-xs-12" type="text" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Address</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input asp-for="@Model.supplierInfo.Address" class="form-control col-md-7 col-xs-12" type="text" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Country</label>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <select class="form-control" asp-for="@Model.supplierInfo.Country_Id" asp-items="@(new SelectList(Model.lstCountry,"Id","Name"))"></select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Ownership</label>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <select class="form-control" asp-for="@Model.supplierInfo.Ownership_Id" asp-items="@(new SelectList(Model.lstOwnership,"Id","Name"))"></select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Employees</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input asp-for="@Model.supplierInfo.Employees" class="form-control col-md-7 col-xs-12" type="text" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Email</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input asp-for="@Model.supplierInfo.Email" class="form-control col-md-7 col-xs-12" type="text" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                            Description <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" required class="form-control col-md-7 col-xs-12" asp-for="@Model.supplierInfo.Description">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Establish Year</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input asp-for="@Model.supplierInfo.EstablishedYear" class="form-control col-md-7 col-xs-12" type="text" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                            Logo <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="file" class="form-control col-md-7 col-xs-12" name="files" id="files" multiple />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                            <button type="submit" class="btn btn-primary">Cancel</button>
+                                            <button type="submit" class="btn btn-success">Submit</button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                            <!--Contact Info Form-->
+                            <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                                <form method="post" data-parsley-validate class="form-horizontal form-label-left" asp-action="UpdateContact" enctype="multipart/form-data">
+                                    <!--Name-->
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                            Name <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" required class="form-control col-md-7 col-xs-12" asp-for="@Model.contactInfo.Name">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                            Email <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" required class="form-control col-md-7 col-xs-12" asp-for="@Model.contactInfo.Email">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                            Address <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" required class="form-control col-md-7 col-xs-12" asp-for="@Model.contactInfo.Address">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                            Address <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" required class="form-control col-md-7 col-xs-12" asp-for="@Model.contactInfo.Phone">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                            <button type="submit" class="btn btn-primary">Cancel</button>
+                                            <button type="submit" class="btn btn-success">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!--Account Info Form-->
+                            <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+                                <form action="./student?action=changePass" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+
+                                    <div class="form-group">
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Old Password</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input name="txtOldPass" id="txtOldPass" class="form-control col-md-7 col-xs-12" type="password" name="middle-name">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">New Password</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input name="txtNewPass" id="txtNewPass" class="form-control col-md-7 col-xs-12" type="password" name="middle-name">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                            <button type="submit" class="btn btn-primary">Cancel</button>
+                                            <button type="submit" class="btn btn-success">Submit</button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--Resources Reference-->
+<script src="~/js/supplier/bootstrap.min.js"></script>
+<!-- chart js -->
+<script src="~/js/supplier/chartjs/chart.min.js"></script>
+<!-- bootstrap progress js -->
+<script src="~/js/supplier/progressbar/bootstrap-progressbar.min.js"></script>
+<script src="~/js/supplier/nicescroll/jquery.nicescroll.min.js"></script>
+<!-- icheck -->
+<script src="~/js/supplier/icheck/icheck.min.js"></script>
+<script src="~/js/supplier/custom.js"></script>

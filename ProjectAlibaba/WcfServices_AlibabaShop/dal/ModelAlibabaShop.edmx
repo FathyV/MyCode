@@ -1,0 +1,2702 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AlibabaShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Administrator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="Avatar" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="WholeSaler_Id" Type="uniqueidentifier" />
+          <Property Name="Supplier_Id" Type="uniqueidentifier" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="char" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RegionCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Harbor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Country_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ownership">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Supplier_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Category_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="ntext" Nullable="false" />
+          <Property Name="Description" Type="ntext" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="MinimumOrder" Type="int" Nullable="false" />
+          <Property Name="MaximumOrder" Type="int" Nullable="false" />
+          <Property Name="QtyInHand" Type="int" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="Discount" Type="int" />
+          <Property Name="Views" Type="int" Nullable="false" />
+          <Property Name="PostDate" Type="date" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductFeedback">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Product_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WholeSaler_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Feedback" Type="ntext" Nullable="false" />
+          <Property Name="PostTime" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PurchaseOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Suplier_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Product_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WholeSaler_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ShipMethod_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="UnitMeasure_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TotalPaid" Type="money" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="ArrivedDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="OrderNo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Quotation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Product_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Supplier_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WholeSaler_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UnitMeasure_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="Message" Type="ntext" Nullable="false" />
+          <Property Name="FileAttachment" Type="varchar" MaxLength="100" />
+          <Property Name="UnitPrice" Type="money" />
+          <Property Name="TaxAmount" Type="money" />
+          <Property Name="SubTotal" Type="money" />
+          <Property Name="Total" Type="money" />
+          <Property Name="RequestDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShipMethod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="ntext" Nullable="false" />
+          <Property Name="Description" Type="ntext" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Country_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Ownership_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Employees" Type="int" Nullable="false" />
+          <Property Name="EstablishedYear" Type="int" Nullable="false" />
+          <Property Name="RegisterDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="Revenue" Type="money" Nullable="false" />
+          <Property Name="Email" Type="ntext" Nullable="false" />
+          <Property Name="Logo" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UnitMeasure">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WholeSaler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="ntext" Nullable="false" />
+          <Property Name="Ownership_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="ntext" Nullable="false" />
+          <Property Name="Country_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RegisterDate" Type="date" Nullable="false" />
+          <Property Name="Email" Type="ntext" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_Category' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Category">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PId" Type="uniqueidentifier" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Main Category" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_Products' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Products">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="Category" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="SupplierId" />
+            <PropertyRef Name="Supplier" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="MinimumOrder" />
+            <PropertyRef Name="MaximumOrder" />
+            <PropertyRef Name="QtyInHand" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Views" />
+            <PropertyRef Name="PostDate" />
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="ntext" Nullable="false" />
+          <Property Name="CategoryId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="ntext" Nullable="false" />
+          <Property Name="SupplierId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Supplier" Type="ntext" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="MinimumOrder" Type="int" Nullable="false" />
+          <Property Name="MaximumOrder" Type="int" Nullable="false" />
+          <Property Name="QtyInHand" Type="int" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="Views" Type="int" Nullable="false" />
+          <Property Name="PostDate" Type="date" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_ProductTop10' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_ProductTop10">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Supplier_Id" />
+            <PropertyRef Name="Category_Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="MinimumOrder" />
+            <PropertyRef Name="MaximumOrder" />
+            <PropertyRef Name="QtyInHand" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Views" />
+            <PropertyRef Name="PostDate" />
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Supplier_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Category_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="ntext" Nullable="false" />
+          <Property Name="Description" Type="ntext" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="MinimumOrder" Type="int" Nullable="false" />
+          <Property Name="MaximumOrder" Type="int" Nullable="false" />
+          <Property Name="QtyInHand" Type="int" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="Discount" Type="int" />
+          <Property Name="Views" Type="int" Nullable="false" />
+          <Property Name="PostDate" Type="date" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_PurchaseOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_PurchaseOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="SupplierId" />
+            <PropertyRef Name="Supplier" />
+            <PropertyRef Name="Product" />
+            <PropertyRef Name="WholeSalerId" />
+            <PropertyRef Name="WholeSaler" />
+            <PropertyRef Name="ShipMethod" />
+            <PropertyRef Name="Qty" />
+            <PropertyRef Name="UnitMeasure" />
+            <PropertyRef Name="TotalPaid" />
+            <PropertyRef Name="OrderDate" />
+            <PropertyRef Name="ArrivedDate" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SupplierId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Supplier" Type="ntext" Nullable="false" />
+          <Property Name="Product" Type="ntext" Nullable="false" />
+          <Property Name="WholeSalerId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WholeSaler" Type="ntext" Nullable="false" />
+          <Property Name="ShipMethod" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="UnitMeasure" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TotalPaid" Type="money" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="ArrivedDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="OrderNo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_SupplierBasicInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_SupplierBasicInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Supplier Name" />
+            <PropertyRef Name="Ownership" />
+            <PropertyRef Name="Revenue" />
+            <PropertyRef Name="Logo" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Supplier Name" Type="ntext" Nullable="false" />
+          <Property Name="Ownership" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Revenue" Type="money" Nullable="false" />
+          <Property Name="Logo" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_SupplierContact' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_SupplierContact">
+          <Key>
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="Address" />
+          </Key>
+          <Property Name="Supplier_Id" Type="uniqueidentifier" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_SupplierFeedback' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_SupplierFeedback">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Product_Id" />
+            <PropertyRef Name="WholeSaler_Id" />
+            <PropertyRef Name="WholeSaler" />
+            <PropertyRef Name="Product" />
+            <PropertyRef Name="Feedback" />
+            <PropertyRef Name="PostTime" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Product_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WholeSaler_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WholeSaler" Type="ntext" Nullable="false" />
+          <Property Name="Product" Type="ntext" Nullable="false" />
+          <Property Name="Feedback" Type="ntext" Nullable="false" />
+          <Property Name="PostTime" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_SupplierForAdmin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_SupplierForAdmin">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Supplier Name" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="Ownership" />
+            <PropertyRef Name="EstablishedYear" />
+            <PropertyRef Name="RegisterDate" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Supplier Name" Type="ntext" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ownership" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EstablishedYear" Type="int" Nullable="false" />
+          <Property Name="RegisterDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_SupplierInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_SupplierInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Ownership_Id" />
+            <PropertyRef Name="Country_Id" />
+            <PropertyRef Name="Supplier Name" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="Ownership" />
+            <PropertyRef Name="Employees" />
+            <PropertyRef Name="EstablishedYear" />
+            <PropertyRef Name="Revenue" />
+            <PropertyRef Name="Logo" />
+            <PropertyRef Name="RegisterDate" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Description" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Ownership_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Country_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Supplier Name" Type="ntext" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ownership" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Employees" Type="int" Nullable="false" />
+          <Property Name="EstablishedYear" Type="int" Nullable="false" />
+          <Property Name="Revenue" Type="money" Nullable="false" />
+          <Property Name="Logo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="RegisterDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="Email" Type="ntext" Nullable="false" />
+          <Property Name="Description" Type="ntext" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_SupplierOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_SupplierOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Suplier_Id" />
+            <PropertyRef Name="Product_Id" />
+            <PropertyRef Name="WholeSaler_Id" />
+            <PropertyRef Name="ShipMethod_Id" />
+            <PropertyRef Name="UnitMeasure_Id" />
+            <PropertyRef Name="Supplier" />
+            <PropertyRef Name="Product" />
+            <PropertyRef Name="UnitMeasure" />
+            <PropertyRef Name="ShipMethod" />
+            <PropertyRef Name="WholeSaler" />
+            <PropertyRef Name="Qty" />
+            <PropertyRef Name="TotalPaid" />
+            <PropertyRef Name="OrderDate" />
+            <PropertyRef Name="ArrivedDate" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Suplier_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Product_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WholeSaler_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ShipMethod_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UnitMeasure_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Supplier" Type="ntext" Nullable="false" />
+          <Property Name="Product" Type="ntext" Nullable="false" />
+          <Property Name="UnitMeasure" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ShipMethod" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WholeSaler" Type="ntext" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="TotalPaid" Type="money" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="ArrivedDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="OrderNo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_SupplierProducts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_SupplierProducts">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Supplier_Id" />
+            <PropertyRef Name="Category_Id" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="CategoryName" />
+            <PropertyRef Name="SupplierName" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="MaximumOrder" />
+            <PropertyRef Name="MinimumOrder" />
+            <PropertyRef Name="QtyInHand" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Views" />
+            <PropertyRef Name="PostDate" />
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Supplier_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Category_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProductName" Type="ntext" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SupplierName" Type="ntext" Nullable="false" />
+          <Property Name="Description" Type="ntext" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="MaximumOrder" Type="int" Nullable="false" />
+          <Property Name="MinimumOrder" Type="int" Nullable="false" />
+          <Property Name="QtyInHand" Type="int" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="Views" Type="int" Nullable="false" />
+          <Property Name="PostDate" Type="date" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Discount" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_SupplierQuotation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_SupplierQuotation">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Supplier_Id" />
+            <PropertyRef Name="Product_Id" />
+            <PropertyRef Name="WholeSaler_Id" />
+            <PropertyRef Name="UnitMeasure_Id" />
+            <PropertyRef Name="Supplier" />
+            <PropertyRef Name="Product" />
+            <PropertyRef Name="UnitMeasure" />
+            <PropertyRef Name="WholeSaler" />
+            <PropertyRef Name="Qty" />
+            <PropertyRef Name="RequestDate" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Message" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Supplier_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Product_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WholeSaler_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UnitMeasure_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Supplier" Type="ntext" Nullable="false" />
+          <Property Name="Product" Type="ntext" Nullable="false" />
+          <Property Name="UnitMeasure" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WholeSaler" Type="ntext" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="Total" Type="money" />
+          <Property Name="SubTotal" Type="money" />
+          <Property Name="RequestDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="UnitPrice" Type="money" />
+          <Property Name="TaxAmount" Type="money" />
+          <Property Name="Message" Type="ntext" Nullable="false" />
+          <Property Name="FileAttachment" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_SupplierRevenue' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_SupplierRevenue">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Revenue" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="ntext" Nullable="false" />
+          <Property Name="Revenue" Type="money" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_Transaction' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Transaction">
+          <Key>
+            <PropertyRef Name="Order Id" />
+            <PropertyRef Name="Product Id" />
+            <PropertyRef Name="Suplier_Id" />
+            <PropertyRef Name="WholeSaler_Id" />
+            <PropertyRef Name="Product Name" />
+            <PropertyRef Name="OrderDate" />
+            <PropertyRef Name="TotalPaid" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Order Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Product Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Suplier_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WholeSaler_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Product Name" Type="ntext" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="TotalPaid" Type="money" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AlibabaShop.dbo.vw_Wholesaler' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Wholesaler">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Ownership" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="RegisterDate" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="ntext" Nullable="false" />
+          <Property Name="Ownership" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RegisterDate" Type="date" Nullable="false" />
+          <Property Name="Email" Type="ntext" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Category_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Category1" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Category1">
+              <PropertyRef Name="PId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Harbor_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Harbor" Type="Self.Harbor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Harbor">
+              <PropertyRef Name="Country_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Category_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Supplier_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductFeedback_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductFeedback" Type="Self.ProductFeedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductFeedback">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductFeedback_WholeSaler">
+          <End Role="WholeSaler" Type="Self.WholeSaler" Multiplicity="1" />
+          <End Role="ProductFeedback" Type="Self.ProductFeedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WholeSaler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductFeedback">
+              <PropertyRef Name="WholeSaler_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_ShipMethod">
+          <End Role="ShipMethod" Type="Self.ShipMethod" Multiplicity="1" />
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShipMethod">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="ShipMethod_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="Suplier_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_UnitMeasure">
+          <End Role="UnitMeasure" Type="Self.UnitMeasure" Multiplicity="1" />
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitMeasure">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="UnitMeasure_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_WholeSaler">
+          <End Role="WholeSaler" Type="Self.WholeSaler" Multiplicity="1" />
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WholeSaler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="WholeSaler_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quotation_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quotation">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quotation_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quotation">
+              <PropertyRef Name="Supplier_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quotation_UnitMeasure">
+          <End Role="UnitMeasure" Type="Self.UnitMeasure" Multiplicity="1" />
+          <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitMeasure">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quotation">
+              <PropertyRef Name="UnitMeasure_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quotation_WholeSaler">
+          <End Role="WholeSaler" Type="Self.WholeSaler" Multiplicity="1" />
+          <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WholeSaler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quotation">
+              <PropertyRef Name="WholeSaler_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="Country_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Ownership">
+          <End Role="Ownership" Type="Self.Ownership" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ownership">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="Ownership_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WholeSaler_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="WholeSaler" Type="Self.WholeSaler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WholeSaler">
+              <PropertyRef Name="Country_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="country_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="country_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="RegionCode" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="country_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="RegionCode" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="fCreateOrderNo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar" />
+        <Function Name="harbor_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="harbor_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="text" Mode="In" />
+          <Parameter Name="Country_Id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Status" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="harbor_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Name" Type="text" Mode="In" />
+          <Parameter Name="Country_Id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Status" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="shipMethod_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="shipMethod_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="text" Mode="In" />
+        </Function>
+        <Function Name="shipMethod_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Name" Type="text" Mode="In" />
+        </Function>
+        <Function Name="sp_CreateCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="PId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_CreateProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Supplier_Id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Category_Id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Name" Type="ntext" Mode="In" />
+          <Parameter Name="Description" Type="ntext" Mode="In" />
+          <Parameter Name="Price" Type="money" Mode="In" />
+          <Parameter Name="MiniumOrder" Type="int" Mode="In" />
+          <Parameter Name="MaximumOrder" Type="int" Mode="In" />
+          <Parameter Name="QtyInHand" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="tinyint" Mode="In" />
+          <Parameter Name="Views" Type="int" Mode="In" />
+          <Parameter Name="PostDate" Type="date" Mode="In" />
+          <Parameter Name="Image" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_CreateUnitMeasure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_DeleteCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_DeleteProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_DeleteUnitMeasure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="PId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Supplier_Id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Category_Id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Name" Type="ntext" Mode="In" />
+          <Parameter Name="Description" Type="ntext" Mode="In" />
+          <Parameter Name="Price" Type="money" Mode="In" />
+          <Parameter Name="MiniumOrder" Type="int" Mode="In" />
+          <Parameter Name="MaximumOrder" Type="int" Mode="In" />
+          <Parameter Name="QtyInHand" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="tinyint" Mode="In" />
+          <Parameter Name="Views" Type="int" Mode="In" />
+          <Parameter Name="PostDate" Type="date" Mode="In" />
+          <Parameter Name="Image" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateUnitMeasure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Suppiler_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Name" Type="ntext" Mode="In" />
+          <Parameter Name="Description" Type="ntext" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Country_Id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Ownership" Type="ntext" Mode="In" />
+          <Parameter Name="Employees" Type="int" Mode="In" />
+          <Parameter Name="BusinessType" Type="ntext" Mode="In" />
+          <Parameter Name="EstablishedYear" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="tinyint" Mode="In" />
+          <Parameter Name="Revenue" Type="money" Mode="In" />
+          <Parameter Name="Email" Type="ntext" Mode="In" />
+          <Parameter Name="Logo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Supplier_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="Supplier_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="ntext" Mode="In" />
+          <Parameter Name="Description" Type="ntext" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Country_Id" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Ownership" Type="ntext" Mode="In" />
+          <Parameter Name="Employees" Type="int" Mode="In" />
+          <Parameter Name="BusinessType" Type="ntext" Mode="In" />
+          <Parameter Name="EstablishedYear" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="tinyint" Mode="In" />
+          <Parameter Name="Revenue" Type="money" Mode="In" />
+          <Parameter Name="Email" Type="ntext" Mode="In" />
+          <Parameter Name="Logo" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="AlibabaShopModelStoreContainer">
+          <EntitySet Name="Administrator" EntityType="Self.Administrator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Harbor" EntityType="Self.Harbor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ownership" EntityType="Self.Ownership" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductFeedback" EntityType="Self.ProductFeedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseOrder" EntityType="Self.PurchaseOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quotation" EntityType="Self.Quotation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShipMethod" EntityType="Self.ShipMethod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnitMeasure" EntityType="Self.UnitMeasure" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WholeSaler" EntityType="Self.WholeSaler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_Category" EntityType="Self.vw_Category" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Category].[Id] AS [Id], 
+    [vw_Category].[PId] AS [PId], 
+    [vw_Category].[Name] AS [Name], 
+    [vw_Category].[Main Category] AS [Main Category]
+    FROM [dbo].[vw_Category] AS [vw_Category]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Products" EntityType="Self.vw_Products" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Products].[Id] AS [Id], 
+    [vw_Products].[Name] AS [Name], 
+    [vw_Products].[CategoryId] AS [CategoryId], 
+    [vw_Products].[Category] AS [Category], 
+    [vw_Products].[Description] AS [Description], 
+    [vw_Products].[SupplierId] AS [SupplierId], 
+    [vw_Products].[Supplier] AS [Supplier], 
+    [vw_Products].[Price] AS [Price], 
+    [vw_Products].[MinimumOrder] AS [MinimumOrder], 
+    [vw_Products].[MaximumOrder] AS [MaximumOrder], 
+    [vw_Products].[QtyInHand] AS [QtyInHand], 
+    [vw_Products].[Status] AS [Status], 
+    [vw_Products].[Views] AS [Views], 
+    [vw_Products].[PostDate] AS [PostDate], 
+    [vw_Products].[Image] AS [Image]
+    FROM [dbo].[vw_Products] AS [vw_Products]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_ProductTop10" EntityType="Self.vw_ProductTop10" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_ProductTop10].[Id] AS [Id], 
+    [vw_ProductTop10].[Supplier_Id] AS [Supplier_Id], 
+    [vw_ProductTop10].[Category_Id] AS [Category_Id], 
+    [vw_ProductTop10].[Name] AS [Name], 
+    [vw_ProductTop10].[Description] AS [Description], 
+    [vw_ProductTop10].[Price] AS [Price], 
+    [vw_ProductTop10].[MinimumOrder] AS [MinimumOrder], 
+    [vw_ProductTop10].[MaximumOrder] AS [MaximumOrder], 
+    [vw_ProductTop10].[QtyInHand] AS [QtyInHand], 
+    [vw_ProductTop10].[Status] AS [Status], 
+    [vw_ProductTop10].[Discount] AS [Discount], 
+    [vw_ProductTop10].[Views] AS [Views], 
+    [vw_ProductTop10].[PostDate] AS [PostDate], 
+    [vw_ProductTop10].[Image] AS [Image]
+    FROM [dbo].[vw_ProductTop10] AS [vw_ProductTop10]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_PurchaseOrder" EntityType="Self.vw_PurchaseOrder" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_PurchaseOrder].[Id] AS [Id], 
+    [vw_PurchaseOrder].[SupplierId] AS [SupplierId], 
+    [vw_PurchaseOrder].[Supplier] AS [Supplier], 
+    [vw_PurchaseOrder].[Product] AS [Product], 
+    [vw_PurchaseOrder].[WholeSalerId] AS [WholeSalerId], 
+    [vw_PurchaseOrder].[WholeSaler] AS [WholeSaler], 
+    [vw_PurchaseOrder].[ShipMethod] AS [ShipMethod], 
+    [vw_PurchaseOrder].[Qty] AS [Qty], 
+    [vw_PurchaseOrder].[UnitMeasure] AS [UnitMeasure], 
+    [vw_PurchaseOrder].[TotalPaid] AS [TotalPaid], 
+    [vw_PurchaseOrder].[OrderDate] AS [OrderDate], 
+    [vw_PurchaseOrder].[ArrivedDate] AS [ArrivedDate], 
+    [vw_PurchaseOrder].[Status] AS [Status], 
+    [vw_PurchaseOrder].[OrderNo] AS [OrderNo]
+    FROM [dbo].[vw_PurchaseOrder] AS [vw_PurchaseOrder]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_SupplierBasicInfo" EntityType="Self.vw_SupplierBasicInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_SupplierBasicInfo].[Id] AS [Id], 
+    [vw_SupplierBasicInfo].[Supplier Name] AS [Supplier Name], 
+    [vw_SupplierBasicInfo].[Ownership] AS [Ownership], 
+    [vw_SupplierBasicInfo].[Revenue] AS [Revenue], 
+    [vw_SupplierBasicInfo].[Logo] AS [Logo]
+    FROM [dbo].[vw_SupplierBasicInfo] AS [vw_SupplierBasicInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_SupplierContact" EntityType="Self.vw_SupplierContact" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_SupplierContact].[Supplier_Id] AS [Supplier_Id], 
+    [vw_SupplierContact].[Email] AS [Email], 
+    [vw_SupplierContact].[Name] AS [Name], 
+    [vw_SupplierContact].[Phone] AS [Phone], 
+    [vw_SupplierContact].[Address] AS [Address]
+    FROM [dbo].[vw_SupplierContact] AS [vw_SupplierContact]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_SupplierFeedback" EntityType="Self.vw_SupplierFeedback" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_SupplierFeedback].[Id] AS [Id], 
+    [vw_SupplierFeedback].[Product_Id] AS [Product_Id], 
+    [vw_SupplierFeedback].[WholeSaler_Id] AS [WholeSaler_Id], 
+    [vw_SupplierFeedback].[WholeSaler] AS [WholeSaler], 
+    [vw_SupplierFeedback].[Product] AS [Product], 
+    [vw_SupplierFeedback].[Feedback] AS [Feedback], 
+    [vw_SupplierFeedback].[PostTime] AS [PostTime], 
+    [vw_SupplierFeedback].[Status] AS [Status]
+    FROM [dbo].[vw_SupplierFeedback] AS [vw_SupplierFeedback]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_SupplierForAdmin" EntityType="Self.vw_SupplierForAdmin" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_SupplierForAdmin].[Id] AS [Id], 
+    [vw_SupplierForAdmin].[Supplier Name] AS [Supplier Name], 
+    [vw_SupplierForAdmin].[Country] AS [Country], 
+    [vw_SupplierForAdmin].[Ownership] AS [Ownership], 
+    [vw_SupplierForAdmin].[EstablishedYear] AS [EstablishedYear], 
+    [vw_SupplierForAdmin].[RegisterDate] AS [RegisterDate], 
+    [vw_SupplierForAdmin].[Status] AS [Status]
+    FROM [dbo].[vw_SupplierForAdmin] AS [vw_SupplierForAdmin]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_SupplierInfo" EntityType="Self.vw_SupplierInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_SupplierInfo].[Id] AS [Id], 
+    [vw_SupplierInfo].[Ownership_Id] AS [Ownership_Id], 
+    [vw_SupplierInfo].[Country_Id] AS [Country_Id], 
+    [vw_SupplierInfo].[Supplier Name] AS [Supplier Name], 
+    [vw_SupplierInfo].[Address] AS [Address], 
+    [vw_SupplierInfo].[Country] AS [Country], 
+    [vw_SupplierInfo].[Ownership] AS [Ownership], 
+    [vw_SupplierInfo].[Employees] AS [Employees], 
+    [vw_SupplierInfo].[EstablishedYear] AS [EstablishedYear], 
+    [vw_SupplierInfo].[Revenue] AS [Revenue], 
+    [vw_SupplierInfo].[Logo] AS [Logo], 
+    [vw_SupplierInfo].[RegisterDate] AS [RegisterDate], 
+    [vw_SupplierInfo].[Status] AS [Status], 
+    [vw_SupplierInfo].[Email] AS [Email], 
+    [vw_SupplierInfo].[Description] AS [Description]
+    FROM [dbo].[vw_SupplierInfo] AS [vw_SupplierInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_SupplierOrder" EntityType="Self.vw_SupplierOrder" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_SupplierOrder].[Id] AS [Id], 
+    [vw_SupplierOrder].[Suplier_Id] AS [Suplier_Id], 
+    [vw_SupplierOrder].[Product_Id] AS [Product_Id], 
+    [vw_SupplierOrder].[WholeSaler_Id] AS [WholeSaler_Id], 
+    [vw_SupplierOrder].[ShipMethod_Id] AS [ShipMethod_Id], 
+    [vw_SupplierOrder].[UnitMeasure_Id] AS [UnitMeasure_Id], 
+    [vw_SupplierOrder].[Supplier] AS [Supplier], 
+    [vw_SupplierOrder].[Product] AS [Product], 
+    [vw_SupplierOrder].[UnitMeasure] AS [UnitMeasure], 
+    [vw_SupplierOrder].[ShipMethod] AS [ShipMethod], 
+    [vw_SupplierOrder].[WholeSaler] AS [WholeSaler], 
+    [vw_SupplierOrder].[Qty] AS [Qty], 
+    [vw_SupplierOrder].[TotalPaid] AS [TotalPaid], 
+    [vw_SupplierOrder].[OrderDate] AS [OrderDate], 
+    [vw_SupplierOrder].[ArrivedDate] AS [ArrivedDate], 
+    [vw_SupplierOrder].[Status] AS [Status], 
+    [vw_SupplierOrder].[OrderNo] AS [OrderNo]
+    FROM [dbo].[vw_SupplierOrder] AS [vw_SupplierOrder]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_SupplierProducts" EntityType="Self.vw_SupplierProducts" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_SupplierProducts].[Id] AS [Id], 
+    [vw_SupplierProducts].[Supplier_Id] AS [Supplier_Id], 
+    [vw_SupplierProducts].[Category_Id] AS [Category_Id], 
+    [vw_SupplierProducts].[ProductName] AS [ProductName], 
+    [vw_SupplierProducts].[CategoryName] AS [CategoryName], 
+    [vw_SupplierProducts].[SupplierName] AS [SupplierName], 
+    [vw_SupplierProducts].[Description] AS [Description], 
+    [vw_SupplierProducts].[Price] AS [Price], 
+    [vw_SupplierProducts].[MaximumOrder] AS [MaximumOrder], 
+    [vw_SupplierProducts].[MinimumOrder] AS [MinimumOrder], 
+    [vw_SupplierProducts].[QtyInHand] AS [QtyInHand], 
+    [vw_SupplierProducts].[Status] AS [Status], 
+    [vw_SupplierProducts].[Views] AS [Views], 
+    [vw_SupplierProducts].[PostDate] AS [PostDate], 
+    [vw_SupplierProducts].[Image] AS [Image], 
+    [vw_SupplierProducts].[Discount] AS [Discount]
+    FROM [dbo].[vw_SupplierProducts] AS [vw_SupplierProducts]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_SupplierQuotation" EntityType="Self.vw_SupplierQuotation" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_SupplierQuotation].[Id] AS [Id], 
+    [vw_SupplierQuotation].[Supplier_Id] AS [Supplier_Id], 
+    [vw_SupplierQuotation].[Product_Id] AS [Product_Id], 
+    [vw_SupplierQuotation].[WholeSaler_Id] AS [WholeSaler_Id], 
+    [vw_SupplierQuotation].[UnitMeasure_Id] AS [UnitMeasure_Id], 
+    [vw_SupplierQuotation].[Supplier] AS [Supplier], 
+    [vw_SupplierQuotation].[Product] AS [Product], 
+    [vw_SupplierQuotation].[UnitMeasure] AS [UnitMeasure], 
+    [vw_SupplierQuotation].[WholeSaler] AS [WholeSaler], 
+    [vw_SupplierQuotation].[Qty] AS [Qty], 
+    [vw_SupplierQuotation].[Total] AS [Total], 
+    [vw_SupplierQuotation].[SubTotal] AS [SubTotal], 
+    [vw_SupplierQuotation].[RequestDate] AS [RequestDate], 
+    [vw_SupplierQuotation].[Status] AS [Status], 
+    [vw_SupplierQuotation].[UnitPrice] AS [UnitPrice], 
+    [vw_SupplierQuotation].[TaxAmount] AS [TaxAmount], 
+    [vw_SupplierQuotation].[Message] AS [Message], 
+    [vw_SupplierQuotation].[FileAttachment] AS [FileAttachment]
+    FROM [dbo].[vw_SupplierQuotation] AS [vw_SupplierQuotation]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_SupplierRevenue" EntityType="Self.vw_SupplierRevenue" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_SupplierRevenue].[Id] AS [Id], 
+    [vw_SupplierRevenue].[Name] AS [Name], 
+    [vw_SupplierRevenue].[Revenue] AS [Revenue]
+    FROM [dbo].[vw_SupplierRevenue] AS [vw_SupplierRevenue]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Transaction" EntityType="Self.vw_Transaction" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Transaction].[Order Id] AS [Order Id], 
+    [vw_Transaction].[Product Id] AS [Product Id], 
+    [vw_Transaction].[Suplier_Id] AS [Suplier_Id], 
+    [vw_Transaction].[WholeSaler_Id] AS [WholeSaler_Id], 
+    [vw_Transaction].[Product Name] AS [Product Name], 
+    [vw_Transaction].[OrderDate] AS [OrderDate], 
+    [vw_Transaction].[TotalPaid] AS [TotalPaid], 
+    [vw_Transaction].[Status] AS [Status]
+    FROM [dbo].[vw_Transaction] AS [vw_Transaction]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_Wholesaler" EntityType="Self.vw_Wholesaler" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Wholesaler].[Id] AS [Id], 
+    [vw_Wholesaler].[Name] AS [Name], 
+    [vw_Wholesaler].[Ownership] AS [Ownership], 
+    [vw_Wholesaler].[Address] AS [Address], 
+    [vw_Wholesaler].[Country] AS [Country], 
+    [vw_Wholesaler].[RegisterDate] AS [RegisterDate], 
+    [vw_Wholesaler].[Email] AS [Email], 
+    [vw_Wholesaler].[Status] AS [Status]
+    FROM [dbo].[vw_Wholesaler] AS [vw_Wholesaler]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Category_Category" Association="Self.FK_Category_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Category1" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Harbor_Country" Association="Self.FK_Harbor_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Harbor" EntitySet="Harbor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Supplier" Association="Self.FK_Product_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductFeedback_Product" Association="Self.FK_ProductFeedback_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductFeedback" EntitySet="ProductFeedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductFeedback_WholeSaler" Association="Self.FK_ProductFeedback_WholeSaler">
+            <End Role="WholeSaler" EntitySet="WholeSaler" />
+            <End Role="ProductFeedback" EntitySet="ProductFeedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_Product" Association="Self.FK_PurchaseOrder_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_ShipMethod" Association="Self.FK_PurchaseOrder_ShipMethod">
+            <End Role="ShipMethod" EntitySet="ShipMethod" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_Supplier" Association="Self.FK_PurchaseOrder_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_UnitMeasure" Association="Self.FK_PurchaseOrder_UnitMeasure">
+            <End Role="UnitMeasure" EntitySet="UnitMeasure" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_WholeSaler" Association="Self.FK_PurchaseOrder_WholeSaler">
+            <End Role="WholeSaler" EntitySet="WholeSaler" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quotation_Product" Association="Self.FK_Quotation_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Quotation" EntitySet="Quotation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quotation_Supplier" Association="Self.FK_Quotation_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Quotation" EntitySet="Quotation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quotation_UnitMeasure" Association="Self.FK_Quotation_UnitMeasure">
+            <End Role="UnitMeasure" EntitySet="UnitMeasure" />
+            <End Role="Quotation" EntitySet="Quotation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quotation_WholeSaler" Association="Self.FK_Quotation_WholeSaler">
+            <End Role="WholeSaler" EntitySet="WholeSaler" />
+            <End Role="Quotation" EntitySet="Quotation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Country" Association="Self.FK_Supplier_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Ownership" Association="Self.FK_Supplier_Ownership">
+            <End Role="Ownership" EntitySet="Ownership" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WholeSaler_Country" Association="Self.FK_WholeSaler_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="WholeSaler" EntitySet="WholeSaler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AlibabaShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Administrator">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Avatar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PId" Type="Guid" />
+          <NavigationProperty Name="Category1" Relationship="Self.FK_Category_Category" FromRole="Category" ToRole="Category1" />
+          <NavigationProperty Name="Category2" Relationship="Self.FK_Category_Category" FromRole="Category1" ToRole="Category" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_Category" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RegionCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Harbors" Relationship="Self.FK_Harbor_Country" FromRole="Country" ToRole="Harbor" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK_Supplier_Country" FromRole="Country" ToRole="Supplier" />
+          <NavigationProperty Name="WholeSalers" Relationship="Self.FK_WholeSaler_Country" FromRole="Country" ToRole="WholeSaler" />
+        </EntityType>
+        <EntityType Name="Harbor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country_Id" Type="Guid" Nullable="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Harbor_Country" FromRole="Harbor" ToRole="Country" />
+        </EntityType>
+        <EntityType Name="Ownership">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK_Supplier_Ownership" FromRole="Ownership" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Supplier_Id" Type="Guid" Nullable="false" />
+          <Property Name="Category_Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="MinimumOrder" Type="Int32" Nullable="false" />
+          <Property Name="MaximumOrder" Type="Int32" Nullable="false" />
+          <Property Name="QtyInHand" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="Views" Type="Int32" Nullable="false" />
+          <Property Name="PostDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_Product_Supplier" FromRole="Product" ToRole="Supplier" />
+          <NavigationProperty Name="ProductFeedbacks" Relationship="Self.FK_ProductFeedback_Product" FromRole="Product" ToRole="ProductFeedback" />
+          <NavigationProperty Name="PurchaseOrders" Relationship="Self.FK_PurchaseOrder_Product" FromRole="Product" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="Quotations" Relationship="Self.FK_Quotation_Product" FromRole="Product" ToRole="Quotation" />
+          <Property Name="Discount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ProductFeedback">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Product_Id" Type="Guid" Nullable="false" />
+          <Property Name="WholeSaler_Id" Type="Guid" Nullable="false" />
+          <Property Name="Feedback" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_ProductFeedback_Product" FromRole="ProductFeedback" ToRole="Product" />
+          <NavigationProperty Name="WholeSaler" Relationship="Self.FK_ProductFeedback_WholeSaler" FromRole="ProductFeedback" ToRole="WholeSaler" />
+        </EntityType>
+        <EntityType Name="PurchaseOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Suplier_Id" Type="Guid" Nullable="false" />
+          <Property Name="Product_Id" Type="Guid" Nullable="false" />
+          <Property Name="WholeSaler_Id" Type="Guid" Nullable="false" />
+          <Property Name="ShipMethod_Id" Type="Guid" Nullable="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="UnitMeasure_Id" Type="Guid" Nullable="false" />
+          <Property Name="TotalPaid" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ArrivedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="OrderNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_PurchaseOrder_Product" FromRole="PurchaseOrder" ToRole="Product" />
+          <NavigationProperty Name="ShipMethod" Relationship="Self.FK_PurchaseOrder_ShipMethod" FromRole="PurchaseOrder" ToRole="ShipMethod" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_PurchaseOrder_Supplier" FromRole="PurchaseOrder" ToRole="Supplier" />
+          <NavigationProperty Name="UnitMeasure" Relationship="Self.FK_PurchaseOrder_UnitMeasure" FromRole="PurchaseOrder" ToRole="UnitMeasure" />
+          <NavigationProperty Name="WholeSaler" Relationship="Self.FK_PurchaseOrder_WholeSaler" FromRole="PurchaseOrder" ToRole="WholeSaler" />
+        </EntityType>
+        <EntityType Name="Quotation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Product_Id" Type="Guid" Nullable="false" />
+          <Property Name="Supplier_Id" Type="Guid" Nullable="false" />
+          <Property Name="WholeSaler_Id" Type="Guid" Nullable="false" />
+          <Property Name="UnitMeasure_Id" Type="Guid" Nullable="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileAttachment" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TaxAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SubTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RequestDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Quotation_Product" FromRole="Quotation" ToRole="Product" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_Quotation_Supplier" FromRole="Quotation" ToRole="Supplier" />
+          <NavigationProperty Name="UnitMeasure" Relationship="Self.FK_Quotation_UnitMeasure" FromRole="Quotation" ToRole="UnitMeasure" />
+          <NavigationProperty Name="WholeSaler" Relationship="Self.FK_Quotation_WholeSaler" FromRole="Quotation" ToRole="WholeSaler" />
+        </EntityType>
+        <EntityType Name="ShipMethod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PurchaseOrders" Relationship="Self.FK_PurchaseOrder_ShipMethod" FromRole="ShipMethod" ToRole="PurchaseOrder" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country_Id" Type="Guid" Nullable="false" />
+          <Property Name="Ownership_Id" Type="Guid" Nullable="false" />
+          <Property Name="Employees" Type="Int32" Nullable="false" />
+          <Property Name="EstablishedYear" Type="Int32" Nullable="false" />
+          <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="Revenue" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Logo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Supplier_Country" FromRole="Supplier" ToRole="Country" />
+          <NavigationProperty Name="Ownership" Relationship="Self.FK_Supplier_Ownership" FromRole="Supplier" ToRole="Ownership" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_Supplier" FromRole="Supplier" ToRole="Product" />
+          <NavigationProperty Name="PurchaseOrders" Relationship="Self.FK_PurchaseOrder_Supplier" FromRole="Supplier" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="Quotations" Relationship="Self.FK_Quotation_Supplier" FromRole="Supplier" ToRole="Quotation" />
+        </EntityType>
+        <EntityType Name="UnitMeasure">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PurchaseOrders" Relationship="Self.FK_PurchaseOrder_UnitMeasure" FromRole="UnitMeasure" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="Quotations" Relationship="Self.FK_Quotation_UnitMeasure" FromRole="UnitMeasure" ToRole="Quotation" />
+        </EntityType>
+        <EntityType Name="WholeSaler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ownership_Id" Type="Guid" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country_Id" Type="Guid" Nullable="false" />
+          <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_WholeSaler_Country" FromRole="WholeSaler" ToRole="Country" />
+          <NavigationProperty Name="ProductFeedbacks" Relationship="Self.FK_ProductFeedback_WholeSaler" FromRole="WholeSaler" ToRole="ProductFeedback" />
+          <NavigationProperty Name="PurchaseOrders" Relationship="Self.FK_PurchaseOrder_WholeSaler" FromRole="WholeSaler" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="Quotations" Relationship="Self.FK_Quotation_WholeSaler" FromRole="WholeSaler" ToRole="Quotation" />
+        </EntityType>
+        <EntityType Name="vw_SupplierBasicInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Supplier_Name" />
+            <PropertyRef Name="Ownership" />
+            <PropertyRef Name="Revenue" />
+            <PropertyRef Name="Logo" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Supplier_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ownership" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Revenue" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Logo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_SupplierForAdmin">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Supplier_Name" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="Ownership" />
+            <PropertyRef Name="EstablishedYear" />
+            <PropertyRef Name="RegisterDate" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Supplier_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ownership" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EstablishedYear" Type="Int32" Nullable="false" />
+          <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_SupplierInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Supplier_Name" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="Ownership" />
+            <PropertyRef Name="Employees" />
+            <PropertyRef Name="EstablishedYear" />
+            <PropertyRef Name="Revenue" />
+            <PropertyRef Name="Logo" />
+            <PropertyRef Name="RegisterDate" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="Ownership_Id" />
+            <PropertyRef Name="Country_Id" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Supplier_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ownership" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Employees" Type="Int32" Nullable="false" />
+          <Property Name="EstablishedYear" Type="Int32" Nullable="false" />
+          <Property Name="Revenue" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Logo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ownership_Id" Type="Guid" Nullable="false" />
+          <Property Name="Country_Id" Type="Guid" Nullable="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_SupplierRevenue">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Revenue" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Revenue" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_Transaction">
+          <Key>
+            <PropertyRef Name="Order_Id" />
+            <PropertyRef Name="Product_Id" />
+            <PropertyRef Name="Suplier_Id" />
+            <PropertyRef Name="WholeSaler_Id" />
+            <PropertyRef Name="Product_Name" />
+            <PropertyRef Name="OrderDate" />
+            <PropertyRef Name="TotalPaid" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Order_Id" Type="Guid" Nullable="false" />
+          <Property Name="Product_Id" Type="Guid" Nullable="false" />
+          <Property Name="Suplier_Id" Type="Guid" Nullable="false" />
+          <Property Name="WholeSaler_Id" Type="Guid" Nullable="false" />
+          <Property Name="Product_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TotalPaid" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Category_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Category1" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Category1">
+              <PropertyRef Name="PId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Category_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Harbor_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Harbor" Type="Self.Harbor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Harbor">
+              <PropertyRef Name="Country_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="Country_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WholeSaler_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="WholeSaler" Type="Self.WholeSaler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WholeSaler">
+              <PropertyRef Name="Country_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Ownership">
+          <End Role="Ownership" Type="Self.Ownership" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ownership">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="Ownership_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Supplier_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductFeedback_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductFeedback" Type="Self.ProductFeedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductFeedback">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quotation_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quotation">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductFeedback_WholeSaler">
+          <End Role="WholeSaler" Type="Self.WholeSaler" Multiplicity="1" />
+          <End Role="ProductFeedback" Type="Self.ProductFeedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WholeSaler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductFeedback">
+              <PropertyRef Name="WholeSaler_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_ShipMethod">
+          <End Role="ShipMethod" Type="Self.ShipMethod" Multiplicity="1" />
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShipMethod">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="ShipMethod_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="Suplier_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_UnitMeasure">
+          <End Role="UnitMeasure" Type="Self.UnitMeasure" Multiplicity="1" />
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitMeasure">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="UnitMeasure_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_WholeSaler">
+          <End Role="WholeSaler" Type="Self.WholeSaler" Multiplicity="1" />
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WholeSaler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="WholeSaler_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quotation_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quotation">
+              <PropertyRef Name="Supplier_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quotation_UnitMeasure">
+          <End Role="UnitMeasure" Type="Self.UnitMeasure" Multiplicity="1" />
+          <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitMeasure">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quotation">
+              <PropertyRef Name="UnitMeasure_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quotation_WholeSaler">
+          <End Role="WholeSaler" Type="Self.WholeSaler" Multiplicity="1" />
+          <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WholeSaler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quotation">
+              <PropertyRef Name="WholeSaler_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AlibabaShopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Administrators" EntityType="Self.Administrator" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="Harbors" EntityType="Self.Harbor" />
+          <EntitySet Name="Ownerships" EntityType="Self.Ownership" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ProductFeedbacks" EntityType="Self.ProductFeedback" />
+          <EntitySet Name="PurchaseOrders" EntityType="Self.PurchaseOrder" />
+          <EntitySet Name="Quotations" EntityType="Self.Quotation" />
+          <EntitySet Name="ShipMethods" EntityType="Self.ShipMethod" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+          <EntitySet Name="UnitMeasures" EntityType="Self.UnitMeasure" />
+          <EntitySet Name="WholeSalers" EntityType="Self.WholeSaler" />
+          <EntitySet Name="vw_SupplierBasicInfo" EntityType="Self.vw_SupplierBasicInfo" />
+          <EntitySet Name="vw_SupplierForAdmin" EntityType="Self.vw_SupplierForAdmin" />
+          <EntitySet Name="vw_SupplierInfo" EntityType="Self.vw_SupplierInfo" />
+          <EntitySet Name="vw_SupplierRevenue" EntityType="Self.vw_SupplierRevenue" />
+          <EntitySet Name="vw_Transaction" EntityType="Self.vw_Transaction" />
+          <AssociationSet Name="FK_Category_Category" Association="Self.FK_Category_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Category1" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Harbor_Country" Association="Self.FK_Harbor_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Harbor" EntitySet="Harbors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Country" Association="Self.FK_Supplier_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WholeSaler_Country" Association="Self.FK_WholeSaler_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="WholeSaler" EntitySet="WholeSalers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Ownership" Association="Self.FK_Supplier_Ownership">
+            <End Role="Ownership" EntitySet="Ownerships" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Supplier" Association="Self.FK_Product_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductFeedback_Product" Association="Self.FK_ProductFeedback_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductFeedback" EntitySet="ProductFeedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_Product" Association="Self.FK_PurchaseOrder_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quotation_Product" Association="Self.FK_Quotation_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Quotation" EntitySet="Quotations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductFeedback_WholeSaler" Association="Self.FK_ProductFeedback_WholeSaler">
+            <End Role="WholeSaler" EntitySet="WholeSalers" />
+            <End Role="ProductFeedback" EntitySet="ProductFeedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_ShipMethod" Association="Self.FK_PurchaseOrder_ShipMethod">
+            <End Role="ShipMethod" EntitySet="ShipMethods" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_Supplier" Association="Self.FK_PurchaseOrder_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_UnitMeasure" Association="Self.FK_PurchaseOrder_UnitMeasure">
+            <End Role="UnitMeasure" EntitySet="UnitMeasures" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_WholeSaler" Association="Self.FK_PurchaseOrder_WholeSaler">
+            <End Role="WholeSaler" EntitySet="WholeSalers" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quotation_Supplier" Association="Self.FK_Quotation_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Quotation" EntitySet="Quotations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quotation_UnitMeasure" Association="Self.FK_Quotation_UnitMeasure">
+            <End Role="UnitMeasure" EntitySet="UnitMeasures" />
+            <End Role="Quotation" EntitySet="Quotations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quotation_WholeSaler" Association="Self.FK_Quotation_WholeSaler">
+            <End Role="WholeSaler" EntitySet="WholeSalers" />
+            <End Role="Quotation" EntitySet="Quotations" />
+          </AssociationSet>
+          <FunctionImport Name="country_delete">
+          <Parameter Name="Id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="country_insert">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="RegionCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="country_update">
+            <Parameter Name="Id" Mode="In" Type="Guid" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="RegionCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="harbor_delete">
+          <Parameter Name="Id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="harbor_insert">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Country_Id" Mode="In" Type="Guid" />
+            <Parameter Name="Status" Mode="In" Type="Byte" />
+          </FunctionImport>
+          <FunctionImport Name="harbor_update">
+            <Parameter Name="Id" Mode="In" Type="Guid" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Country_Id" Mode="In" Type="Guid" />
+            <Parameter Name="Status" Mode="In" Type="Byte" />
+          </FunctionImport>
+          <FunctionImport Name="shipMethod_delete">
+          <Parameter Name="Id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="shipMethod_insert">
+          <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="shipMethod_update">
+            <Parameter Name="Id" Mode="In" Type="Guid" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CreateCategory">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="PId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CreateProduct">
+            <Parameter Name="Supplier_Id" Mode="In" Type="Guid" />
+            <Parameter Name="Category_Id" Mode="In" Type="Guid" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Price" Mode="In" Type="Decimal" />
+            <Parameter Name="MiniumOrder" Mode="In" Type="Int32" />
+            <Parameter Name="MaximumOrder" Mode="In" Type="Int32" />
+            <Parameter Name="QtyInHand" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="Byte" />
+            <Parameter Name="Views" Mode="In" Type="Int32" />
+            <Parameter Name="PostDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Image" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_CreateUnitMeasure">
+          <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_DeleteCategory">
+          <Parameter Name="Id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_DeleteProduct">
+          <Parameter Name="Id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_DeleteUnitMeasure">
+          <Parameter Name="Id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdateCategory">
+            <Parameter Name="Id" Mode="In" Type="Guid" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="PId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdateProduct">
+            <Parameter Name="Id" Mode="In" Type="Guid" />
+            <Parameter Name="Supplier_Id" Mode="In" Type="Guid" />
+            <Parameter Name="Category_Id" Mode="In" Type="Guid" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Price" Mode="In" Type="Decimal" />
+            <Parameter Name="MiniumOrder" Mode="In" Type="Int32" />
+            <Parameter Name="MaximumOrder" Mode="In" Type="Int32" />
+            <Parameter Name="QtyInHand" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="Byte" />
+            <Parameter Name="Views" Mode="In" Type="Int32" />
+            <Parameter Name="PostDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Image" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdateUnitMeasure">
+            <Parameter Name="Id" Mode="In" Type="Guid" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Suppiler_Update">
+            <Parameter Name="Id" Mode="In" Type="Guid" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Country_Id" Mode="In" Type="Guid" />
+            <Parameter Name="Ownership" Mode="In" Type="String" />
+            <Parameter Name="Employees" Mode="In" Type="Int32" />
+            <Parameter Name="BusinessType" Mode="In" Type="String" />
+            <Parameter Name="EstablishedYear" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="Byte" />
+            <Parameter Name="Revenue" Mode="In" Type="Decimal" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Logo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Supplier_Delete">
+          <Parameter Name="Id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="Supplier_Insert">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Country_Id" Mode="In" Type="Guid" />
+            <Parameter Name="Ownership" Mode="In" Type="String" />
+            <Parameter Name="Employees" Mode="In" Type="Int32" />
+            <Parameter Name="BusinessType" Mode="In" Type="String" />
+            <Parameter Name="EstablishedYear" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="Byte" />
+            <Parameter Name="Revenue" Mode="In" Type="Decimal" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Logo" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="vw_SupplierProducts" EntityType="AlibabaShopModel.vw_SupplierProducts" />
+          <EntitySet Name="vw_SupplierFeedback" EntityType="AlibabaShopModel.vw_SupplierFeedback" />
+          <EntitySet Name="vw_SupplierOrder" EntityType="AlibabaShopModel.vw_SupplierOrder" />
+          <EntitySet Name="vw_SupplierQuotation" EntityType="AlibabaShopModel.vw_SupplierQuotation" />
+          <EntitySet Name="vw_Category" EntityType="AlibabaShopModel.vw_Category" />
+          <EntitySet Name="vw_ProductTop10" EntityType="AlibabaShopModel.vw_ProductTop10" />
+          <EntitySet Name="vw_Products" EntityType="AlibabaShopModel.vw_Products" />
+          <EntitySet Name="vw_PurchaseOrder" EntityType="AlibabaShopModel.vw_PurchaseOrder" />
+          <EntitySet Name="vw_Wholesaler" EntityType="AlibabaShopModel.vw_Wholesaler" />
+          <EntitySet Name="Contacts" EntityType="AlibabaShopModel.Contact" />
+          <EntitySet Name="vw_SupplierContact" EntityType="AlibabaShopModel.vw_SupplierContact" />
+        </EntityContainer>
+        <EntityType Name="vw_SupplierProducts">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Supplier_Id" />
+            <PropertyRef Name="Category_Id" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="CategoryName" />
+            <PropertyRef Name="SupplierName" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="MaximumOrder" />
+            <PropertyRef Name="MinimumOrder" />
+            <PropertyRef Name="QtyInHand" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Views" />
+            <PropertyRef Name="PostDate" />
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Supplier_Id" Type="Guid" Nullable="false" />
+          <Property Name="Category_Id" Type="Guid" Nullable="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="MaximumOrder" Type="Int32" Nullable="false" />
+          <Property Name="MinimumOrder" Type="Int32" Nullable="false" />
+          <Property Name="QtyInHand" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="Views" Type="Int32" Nullable="false" />
+          <Property Name="PostDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Discount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_SupplierFeedback">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Product_Id" />
+            <PropertyRef Name="WholeSaler_Id" />
+            <PropertyRef Name="WholeSaler" />
+            <PropertyRef Name="Product" />
+            <PropertyRef Name="Feedback" />
+            <PropertyRef Name="PostTime" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Product_Id" Type="Guid" Nullable="false" />
+          <Property Name="WholeSaler_Id" Type="Guid" Nullable="false" />
+          <Property Name="WholeSaler" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Product" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Feedback" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PostTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_SupplierOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Suplier_Id" />
+            <PropertyRef Name="Product_Id" />
+            <PropertyRef Name="WholeSaler_Id" />
+            <PropertyRef Name="ShipMethod_Id" />
+            <PropertyRef Name="UnitMeasure_Id" />
+            <PropertyRef Name="Supplier" />
+            <PropertyRef Name="Product" />
+            <PropertyRef Name="UnitMeasure" />
+            <PropertyRef Name="ShipMethod" />
+            <PropertyRef Name="WholeSaler" />
+            <PropertyRef Name="Qty" />
+            <PropertyRef Name="TotalPaid" />
+            <PropertyRef Name="OrderDate" />
+            <PropertyRef Name="ArrivedDate" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Suplier_Id" Type="Guid" Nullable="false" />
+          <Property Name="Product_Id" Type="Guid" Nullable="false" />
+          <Property Name="WholeSaler_Id" Type="Guid" Nullable="false" />
+          <Property Name="ShipMethod_Id" Type="Guid" Nullable="false" />
+          <Property Name="UnitMeasure_Id" Type="Guid" Nullable="false" />
+          <Property Name="Supplier" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Product" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UnitMeasure" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShipMethod" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WholeSaler" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="TotalPaid" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ArrivedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="OrderNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_SupplierQuotation">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Supplier_Id" />
+            <PropertyRef Name="Product_Id" />
+            <PropertyRef Name="WholeSaler_Id" />
+            <PropertyRef Name="UnitMeasure_Id" />
+            <PropertyRef Name="Supplier" />
+            <PropertyRef Name="Product" />
+            <PropertyRef Name="UnitMeasure" />
+            <PropertyRef Name="WholeSaler" />
+            <PropertyRef Name="Qty" />
+            <PropertyRef Name="RequestDate" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Message" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Supplier_Id" Type="Guid" Nullable="false" />
+          <Property Name="Product_Id" Type="Guid" Nullable="false" />
+          <Property Name="WholeSaler_Id" Type="Guid" Nullable="false" />
+          <Property Name="UnitMeasure_Id" Type="Guid" Nullable="false" />
+          <Property Name="Supplier" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Product" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UnitMeasure" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WholeSaler" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SubTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RequestDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TaxAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileAttachment" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_Category">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="PId" Type="Guid" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Main_Category" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vw_ProductTop10">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Supplier_Id" />
+            <PropertyRef Name="Category_Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="MinimumOrder" />
+            <PropertyRef Name="MaximumOrder" />
+            <PropertyRef Name="QtyInHand" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Views" />
+            <PropertyRef Name="PostDate" />
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Supplier_Id" Type="Guid" Nullable="false" />
+          <Property Name="Category_Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="MinimumOrder" Type="Int32" Nullable="false" />
+          <Property Name="MaximumOrder" Type="Int32" Nullable="false" />
+          <Property Name="QtyInHand" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="Views" Type="Int32" Nullable="false" />
+          <Property Name="PostDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Discount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_Products">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="Category" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="SupplierId" />
+            <PropertyRef Name="Supplier" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="MinimumOrder" />
+            <PropertyRef Name="MaximumOrder" />
+            <PropertyRef Name="QtyInHand" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="Views" />
+            <PropertyRef Name="PostDate" />
+            <PropertyRef Name="Image" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryId" Type="Guid" Nullable="false" />
+          <Property Name="Category" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierId" Type="Guid" Nullable="false" />
+          <Property Name="Supplier" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="MinimumOrder" Type="Int32" Nullable="false" />
+          <Property Name="MaximumOrder" Type="Int32" Nullable="false" />
+          <Property Name="QtyInHand" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="Views" Type="Int32" Nullable="false" />
+          <Property Name="PostDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_PurchaseOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="SupplierId" />
+            <PropertyRef Name="Supplier" />
+            <PropertyRef Name="Product" />
+            <PropertyRef Name="WholeSalerId" />
+            <PropertyRef Name="WholeSaler" />
+            <PropertyRef Name="ShipMethod" />
+            <PropertyRef Name="Qty" />
+            <PropertyRef Name="UnitMeasure" />
+            <PropertyRef Name="TotalPaid" />
+            <PropertyRef Name="OrderDate" />
+            <PropertyRef Name="ArrivedDate" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="SupplierId" Type="Guid" Nullable="false" />
+          <Property Name="Supplier" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Product" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WholeSalerId" Type="Guid" Nullable="false" />
+          <Property Name="WholeSaler" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ShipMethod" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="UnitMeasure" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TotalPaid" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ArrivedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="OrderNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_Wholesaler">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Ownership" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="RegisterDate" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ownership" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="WholeSaler_Id" Type="Guid" />
+          <Property Name="Supplier_Id" Type="Guid" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_SupplierContact">
+          <Key>
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="Address" />
+          </Key>
+          <Property Name="Supplier_Id" Type="Guid" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AlibabaShopModelStoreContainer" CdmEntityContainer="AlibabaShopEntities">
+          <EntitySetMapping Name="Administrators">
+            <EntityTypeMapping TypeName="AlibabaShopModel.Administrator">
+              <MappingFragment StoreEntitySet="Administrator">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="AlibabaShopModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="AlibabaShopModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Harbors">
+            <EntityTypeMapping TypeName="AlibabaShopModel.Harbor">
+              <MappingFragment StoreEntitySet="Harbor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Country_Id" ColumnName="Country_Id" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ownerships">
+            <EntityTypeMapping TypeName="AlibabaShopModel.Ownership">
+              <MappingFragment StoreEntitySet="Ownership">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="AlibabaShopModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Supplier_Id" ColumnName="Supplier_Id" />
+                <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="MinimumOrder" ColumnName="MinimumOrder" />
+                <ScalarProperty Name="MaximumOrder" ColumnName="MaximumOrder" />
+                <ScalarProperty Name="QtyInHand" ColumnName="QtyInHand" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Views" ColumnName="Views" />
+                <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductFeedbacks">
+            <EntityTypeMapping TypeName="AlibabaShopModel.ProductFeedback">
+              <MappingFragment StoreEntitySet="ProductFeedback">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+                <ScalarProperty Name="WholeSaler_Id" ColumnName="WholeSaler_Id" />
+                <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+                <ScalarProperty Name="PostTime" ColumnName="PostTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrders">
+            <EntityTypeMapping TypeName="AlibabaShopModel.PurchaseOrder">
+              <MappingFragment StoreEntitySet="PurchaseOrder">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Suplier_Id" ColumnName="Suplier_Id" />
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+                <ScalarProperty Name="WholeSaler_Id" ColumnName="WholeSaler_Id" />
+                <ScalarProperty Name="ShipMethod_Id" ColumnName="ShipMethod_Id" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="UnitMeasure_Id" ColumnName="UnitMeasure_Id" />
+                <ScalarProperty Name="TotalPaid" ColumnName="TotalPaid" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="ArrivedDate" ColumnName="ArrivedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quotations">
+            <EntityTypeMapping TypeName="AlibabaShopModel.Quotation">
+              <MappingFragment StoreEntitySet="Quotation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+                <ScalarProperty Name="Supplier_Id" ColumnName="Supplier_Id" />
+                <ScalarProperty Name="WholeSaler_Id" ColumnName="WholeSaler_Id" />
+                <ScalarProperty Name="UnitMeasure_Id" ColumnName="UnitMeasure_Id" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="FileAttachment" ColumnName="FileAttachment" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShipMethods">
+            <EntityTypeMapping TypeName="AlibabaShopModel.ShipMethod">
+              <MappingFragment StoreEntitySet="ShipMethod">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="AlibabaShopModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Country_Id" ColumnName="Country_Id" />
+                <ScalarProperty Name="Ownership_Id" ColumnName="Ownership_Id" />
+                <ScalarProperty Name="Employees" ColumnName="Employees" />
+                <ScalarProperty Name="EstablishedYear" ColumnName="EstablishedYear" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Revenue" ColumnName="Revenue" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnitMeasures">
+            <EntityTypeMapping TypeName="AlibabaShopModel.UnitMeasure">
+              <MappingFragment StoreEntitySet="UnitMeasure">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WholeSalers">
+            <EntityTypeMapping TypeName="AlibabaShopModel.WholeSaler">
+              <MappingFragment StoreEntitySet="WholeSaler">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Ownership_Id" ColumnName="Ownership_Id" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Country_Id" ColumnName="Country_Id" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_SupplierBasicInfo">
+            <EntityTypeMapping TypeName="AlibabaShopModel.vw_SupplierBasicInfo">
+              <MappingFragment StoreEntitySet="vw_SupplierBasicInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Supplier_Name" ColumnName="Supplier Name" />
+                <ScalarProperty Name="Ownership" ColumnName="Ownership" />
+                <ScalarProperty Name="Revenue" ColumnName="Revenue" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_SupplierForAdmin">
+            <EntityTypeMapping TypeName="AlibabaShopModel.vw_SupplierForAdmin">
+              <MappingFragment StoreEntitySet="vw_SupplierForAdmin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Supplier_Name" ColumnName="Supplier Name" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Ownership" ColumnName="Ownership" />
+                <ScalarProperty Name="EstablishedYear" ColumnName="EstablishedYear" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_SupplierInfo">
+            <EntityTypeMapping TypeName="AlibabaShopModel.vw_SupplierInfo">
+              <MappingFragment StoreEntitySet="vw_SupplierInfo">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Country_Id" ColumnName="Country_Id" />
+                <ScalarProperty Name="Ownership_Id" ColumnName="Ownership_Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Supplier_Name" ColumnName="Supplier Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Ownership" ColumnName="Ownership" />
+                <ScalarProperty Name="Employees" ColumnName="Employees" />
+                <ScalarProperty Name="EstablishedYear" ColumnName="EstablishedYear" />
+                <ScalarProperty Name="Revenue" ColumnName="Revenue" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_SupplierRevenue">
+            <EntityTypeMapping TypeName="AlibabaShopModel.vw_SupplierRevenue">
+              <MappingFragment StoreEntitySet="vw_SupplierRevenue">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Revenue" ColumnName="Revenue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Transaction">
+            <EntityTypeMapping TypeName="AlibabaShopModel.vw_Transaction">
+              <MappingFragment StoreEntitySet="vw_Transaction">
+                <ScalarProperty Name="Order_Id" ColumnName="Order Id" />
+                <ScalarProperty Name="Product_Id" ColumnName="Product Id" />
+                <ScalarProperty Name="Suplier_Id" ColumnName="Suplier_Id" />
+                <ScalarProperty Name="WholeSaler_Id" ColumnName="WholeSaler_Id" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product Name" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="TotalPaid" ColumnName="TotalPaid" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="country_delete" FunctionName="AlibabaShopModel.Store.country_delete" />
+          <FunctionImportMapping FunctionImportName="country_insert" FunctionName="AlibabaShopModel.Store.country_insert" />
+          <FunctionImportMapping FunctionImportName="country_update" FunctionName="AlibabaShopModel.Store.country_update" />
+          <FunctionImportMapping FunctionImportName="harbor_delete" FunctionName="AlibabaShopModel.Store.harbor_delete" />
+          <FunctionImportMapping FunctionImportName="harbor_insert" FunctionName="AlibabaShopModel.Store.harbor_insert" />
+          <FunctionImportMapping FunctionImportName="harbor_update" FunctionName="AlibabaShopModel.Store.harbor_update" />
+          <FunctionImportMapping FunctionImportName="shipMethod_delete" FunctionName="AlibabaShopModel.Store.shipMethod_delete" />
+          <FunctionImportMapping FunctionImportName="shipMethod_insert" FunctionName="AlibabaShopModel.Store.shipMethod_insert" />
+          <FunctionImportMapping FunctionImportName="shipMethod_update" FunctionName="AlibabaShopModel.Store.shipMethod_update" />
+          <FunctionImportMapping FunctionImportName="sp_CreateCategory" FunctionName="AlibabaShopModel.Store.sp_CreateCategory" />
+          <FunctionImportMapping FunctionImportName="sp_CreateProduct" FunctionName="AlibabaShopModel.Store.sp_CreateProduct" />
+          <FunctionImportMapping FunctionImportName="sp_CreateUnitMeasure" FunctionName="AlibabaShopModel.Store.sp_CreateUnitMeasure" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteCategory" FunctionName="AlibabaShopModel.Store.sp_DeleteCategory" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteProduct" FunctionName="AlibabaShopModel.Store.sp_DeleteProduct" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteUnitMeasure" FunctionName="AlibabaShopModel.Store.sp_DeleteUnitMeasure" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateCategory" FunctionName="AlibabaShopModel.Store.sp_UpdateCategory" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateProduct" FunctionName="AlibabaShopModel.Store.sp_UpdateProduct" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateUnitMeasure" FunctionName="AlibabaShopModel.Store.sp_UpdateUnitMeasure" />
+          <FunctionImportMapping FunctionImportName="Suppiler_Update" FunctionName="AlibabaShopModel.Store.Suppiler_Update" />
+          <FunctionImportMapping FunctionImportName="Supplier_Delete" FunctionName="AlibabaShopModel.Store.Supplier_Delete" />
+          <FunctionImportMapping FunctionImportName="Supplier_Insert" FunctionName="AlibabaShopModel.Store.Supplier_Insert" />
+          <EntitySetMapping Name="vw_SupplierProducts">
+            <EntityTypeMapping TypeName="AlibabaShopModel.vw_SupplierProducts">
+              <MappingFragment StoreEntitySet="vw_SupplierProducts">
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+                <ScalarProperty Name="Views" ColumnName="Views" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="QtyInHand" ColumnName="QtyInHand" />
+                <ScalarProperty Name="MinimumOrder" ColumnName="MinimumOrder" />
+                <ScalarProperty Name="MaximumOrder" ColumnName="MaximumOrder" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+                <ScalarProperty Name="Supplier_Id" ColumnName="Supplier_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_SupplierFeedback">
+            <EntityTypeMapping TypeName="AlibabaShopModel.vw_SupplierFeedback">
+              <MappingFragment StoreEntitySet="vw_SupplierFeedback">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PostTime" ColumnName="PostTime" />
+                <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="WholeSaler" ColumnName="WholeSaler" />
+                <ScalarProperty Name="WholeSaler_Id" ColumnName="WholeSaler_Id" />
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_SupplierOrder">
+            <EntityTypeMapping TypeName="AlibabaShopModel.vw_SupplierOrder">
+              <MappingFragment StoreEntitySet="vw_SupplierOrder">
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ArrivedDate" ColumnName="ArrivedDate" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="TotalPaid" ColumnName="TotalPaid" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="WholeSaler" ColumnName="WholeSaler" />
+                <ScalarProperty Name="ShipMethod" ColumnName="ShipMethod" />
+                <ScalarProperty Name="UnitMeasure" ColumnName="UnitMeasure" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+                <ScalarProperty Name="UnitMeasure_Id" ColumnName="UnitMeasure_Id" />
+                <ScalarProperty Name="ShipMethod_Id" ColumnName="ShipMethod_Id" />
+                <ScalarProperty Name="WholeSaler_Id" ColumnName="WholeSaler_Id" />
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+                <ScalarProperty Name="Suplier_Id" ColumnName="Suplier_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_SupplierQuotation">
+            <EntityTypeMapping TypeName="AlibabaShopModel.vw_SupplierQuotation">
+              <MappingFragment StoreEntitySet="vw_SupplierQuotation">
+                <ScalarProperty Name="FileAttachment" ColumnName="FileAttachment" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="WholeSaler" ColumnName="WholeSaler" />
+                <ScalarProperty Name="UnitMeasure" ColumnName="UnitMeasure" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+                <ScalarProperty Name="UnitMeasure_Id" ColumnName="UnitMeasure_Id" />
+                <ScalarProperty Name="WholeSaler_Id" ColumnName="WholeSaler_Id" />
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+                <ScalarProperty Name="Supplier_Id" ColumnName="Supplier_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Category">
+            <EntityTypeMapping TypeName="AlibabaShopModel.vw_Category">
+              <MappingFragment StoreEntitySet="vw_Category">
+                <ScalarProperty Name="Main_Category" ColumnName="Main Category" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_ProductTop10">
+            <EntityTypeMapping TypeName="AlibabaShopModel.vw_ProductTop10">
+              <MappingFragment StoreEntitySet="vw_ProductTop10">
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+                <ScalarProperty Name="Views" ColumnName="Views" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="QtyInHand" ColumnName="QtyInHand" />
+                <ScalarProperty Name="MaximumOrder" ColumnName="MaximumOrder" />
+                <ScalarProperty Name="MinimumOrder" ColumnName="MinimumOrder" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+                <ScalarProperty Name="Supplier_Id" ColumnName="Supplier_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Products">
+            <EntityTypeMapping TypeName="AlibabaShopModel.vw_Products">
+              <MappingFragment StoreEntitySet="vw_Products">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+                <ScalarProperty Name="Views" ColumnName="Views" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="QtyInHand" ColumnName="QtyInHand" />
+                <ScalarProperty Name="MaximumOrder" ColumnName="MaximumOrder" />
+                <ScalarProperty Name="MinimumOrder" ColumnName="MinimumOrder" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_PurchaseOrder">
+            <EntityTypeMapping TypeName="AlibabaShopModel.vw_PurchaseOrder">
+              <MappingFragment StoreEntitySet="vw_PurchaseOrder">
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ArrivedDate" ColumnName="ArrivedDate" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="TotalPaid" ColumnName="TotalPaid" />
+                <ScalarProperty Name="UnitMeasure" ColumnName="UnitMeasure" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ShipMethod" ColumnName="ShipMethod" />
+                <ScalarProperty Name="WholeSaler" ColumnName="WholeSaler" />
+                <ScalarProperty Name="WholeSalerId" ColumnName="WholeSalerId" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_Wholesaler">
+            <EntityTypeMapping TypeName="AlibabaShopModel.vw_Wholesaler">
+              <MappingFragment StoreEntitySet="vw_Wholesaler">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Ownership" ColumnName="Ownership" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="AlibabaShopModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Supplier_Id" ColumnName="Supplier_Id" />
+                <ScalarProperty Name="WholeSaler_Id" ColumnName="WholeSaler_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_SupplierContact">
+            <EntityTypeMapping TypeName="AlibabaShopModel.vw_SupplierContact">
+              <MappingFragment StoreEntitySet="vw_SupplierContact">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Supplier_Id" ColumnName="Supplier_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

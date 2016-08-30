@@ -1,0 +1,135 @@
+﻿@model SupplierReference.vw_SupplierQuotation
+
+<script src="~/lib/supplier/myScript.js"></script>
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>E-commerce :: Product Page</h3>
+        </div>
+
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Create Product Form</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a href="#"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#">Settings 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                    @*Show Request Quotation*@
+                    <table class="table table-striped projects">
+                        <thead>
+                            <tr>
+                                <th style="width: 1%">#</th>
+                                <th>WholeSaler</th>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Request Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#</td>
+                                <td><a>@Model.WholeSaler</a></td>
+                                <td><a>@Model.Product</a></td>
+                                <td>@Model.Qty</td>
+                                <td>@Model.RequestDate</td>
+                                <td>
+                                    <button type="button" class="btn btn-success btn-xs">Pending</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                    @*Quotation Form*@
+                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" asp-controller="supplier" method="post" asp-action="SendBackQuotation">
+                        <input type="hidden" asp-for="Id" />
+                        <!--Unit Price-->
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Unit Price <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" asp-for="@Model.UnitPrice" required class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+
+                        <!--Tax Amount-->
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Tax Amount <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" asp-for="@Model.TaxAmount" required class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+
+                        <!--Sub Total-->
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Sub Total <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" asp-for="@Model.SubTotal" required class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+
+                        <!--Total-->
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Total <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" asp-for="@Model.Total" required class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+
+                        <!--Button-->
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <button type="submit" class="btn btn-primary">Cancel</button>
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
