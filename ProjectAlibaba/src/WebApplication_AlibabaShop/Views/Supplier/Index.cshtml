@@ -116,7 +116,20 @@
                                 </ul>
                                 <div class="clearfix"></div>
                             </div>
-                            <ul class="list-unstyled top_profiles scroll-view" id="courseList"></ul>
+                            <ul class="list-unstyled top_profiles scroll-view" id="courseList">
+                                <!--Top income prodcut-->
+                                @foreach (var item in Model.topProduct)
+                                {
+                                <li class='media event'>
+                                    <a class='pull-left border-aero profile_thumb'><i class='fa fa-user aero'></i></a>
+                                    <div class='media-body'>
+                                        <a class='title' href='#'>@item.ProductName</a>
+                                        <p><strong>@item.Price.ToString("C0")</strong></p>
+                                        <p><small>@item.Views</small></p>
+                                    </div>
+                                </li>
+                                }
+                            </ul>
                         </div>
                     </div>
 
@@ -223,7 +236,7 @@
         <div class="col-md-4">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Scores</h2>
+                    <h2>Pending Order</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li>
                             <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -247,31 +260,48 @@
                 </div>
                 <div class="x_content">
 
-                    <p>Simple table with scores listing with progress and editing options</p>
-
-                    <!-- start project list -->
+                    <p>Simple table with pending order listing</p>
+                    <!--Pending Order-->
                     <table class="table table-striped projects">
                         <thead>
                             <tr>
                                 <th style="width: 1%">#</th>
-                                <th style="width: 20%">Test</th>
-                                <th>Course</th>
-                                <th>Mark</th>
-                                <th>Date</th>
+                                <th>Order No</th>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>OrderDate</th>
+                                <th style="width: 20%">#Action</th>
                             </tr>
                         </thead>
-                        <tbody id="scoresBody"></tbody>
+                        <tbody>
+                            @foreach (var item in @Model.orderCollection)
+                            {
+                                if (item.Status == 0)
+                                {
+                                    <tr>
+                                        <td>#</td>
+                                        <td>
+                                            @item.OrderNo
+                                        </td>
+                                        <td><a>@item.Product</a></td>
+                                        <td>@item.Qty</td>
+                                        <td>@item.OrderDate</td>
+                                        <td>
+                                            <a asp-controller="supplier" asp-action="AcceptOrder" asp-route-id="@item.Id" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Accept </a>
+                                            <a asp-controller="supplier" asp-action="AbortOrder" asp-route-id="@item.Id" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Abort </a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
                     </table>
-                    <!-- end project list -->
-
                 </div>
             </div>
         </div>
-
         <div class="col-md-4">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Class Notification <small>Sessions</small></h2>
+                    <h2>Class Notification <small>Pending Quotation</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li>
                             <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -293,7 +323,37 @@
                     </ul>
                     <div class="clearfix"></div>
                 </div>
-                <div class="x_content" id="notiList">
+                <!--Pending Quotation-->
+                <div class="x_content" >
+                    <table class="table table-striped projects">
+                        <thead>
+                            <tr>
+                                <th style="width: 1%">#</th>
+                                <th>Product</th>
+                                <th>Qty</th>
+                                <th>Unit Measure</th>
+                                <th style="width: 20%">#Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in @Model.pendingQuotation)
+                            {
+                                if (item.Status == 0)
+                                {
+                                    <tr>
+                                        <td>#</td>
+                                        <td>@item.Product</td>
+                                        <td>@item.Qty</td>
+                                        <td>@item.UnitMeasure</td>
+                                        <td>
+                                            <a asp-controller="supplier" asp-action="HandleQuotation" asp-route-id="@item.Id" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> Accept </a>
+                                            <a class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Abort </a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
 
                 </div>
             </div>

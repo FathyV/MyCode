@@ -148,18 +148,12 @@ namespace WebApplication_AlibabaShop.Controllers
         public async Task<IActionResult> Index()
         {
             SupplierIndexViewModel indexView = new SupplierIndexViewModel();
-
             #region Save Supplier Info in Session
             HttpContext.Session.SetString("Id", "79DC9265-13CE-41D8-8820-21AB83BF899A");
             vw_SupplierInfo s = await svcClient.getSupplierInfoAsync(new Guid(HttpContext.Session.GetString("Id")));
             HttpContext.Session.SetString("Name", s.Supplier_Name);
             HttpContext.Session.SetString("Logo", s.Logo);
             #endregion
-
-            #region Loading Report
-            #endregion
-
-
             #region Other component for index view
             vw_SupplierOrder[] lstOrder = await svcClient.getSupplierOrderListAsync(new Guid(HttpContext.Session.GetString("Id")));
             vw_SupplierQuotation[] lstQuotation = await svcClient.getSupplierQuotationAsync(new Guid(HttpContext.Session.GetString("Id")));
@@ -170,18 +164,70 @@ namespace WebApplication_AlibabaShop.Controllers
 
             indexView.orderCollection = lstOrder.ToList();
             indexView.pendingQuotation = lstQuotation.ToList();
-            indexView.topProduct = lstProduct.ToList();
-
+            
             indexView.totalOrder = lstOrder.ToList().Count;
             indexView.totalProduct = lstProduct.ToList().Count;
             indexView.totalQuotation = lstQuotation.ToList().Count;
 
-            foreach(vw_SupplierOrder order in lstOrder.ToList())
+            foreach (vw_SupplierOrder order in lstOrder.ToList())
             {
                 indexView.totalRevenue += (int)order.TotalPaid;
             }
+
+            //Sort top 3 product
+            #region using selection sort
+            if (lstProduct.Length > 0)
+            {
+                int n = lstProduct.Length;
+
+                for (int i = 0; i <= n - 2; i++)
+                {
+                    int min_index = i;
+
+                    for (int j = i + 1; j <= n - 1; j++)
+                    {
+                        if (lstProduct[j].Views > lstProduct[min_index].Views)
+                        {
+                            vw_SupplierProducts temp = lstProduct[j];
+                            lstProduct[j] = lstProduct[min_index];
+                            lstProduct[min_index] = temp;
+                            min_index = j;
+                        }
+                    }
+                }
+            }
+            indexView.topProduct = lstProduct.ToList().GetRange(0,3);
             #endregion
 
+
+            #endregion
+            #region Loading Report
+            List<SupplierRevenue> lstRevenue = new List<SupplierRevenue>();
+            //Traverse through the product
+            foreach (vw_SupplierProducts pro in lstProduct.ToList())
+            {
+                //Create an instance of product revenue and set the default values
+                SupplierRevenue obj = new SupplierRevenue();
+                obj.productName = pro.ProductName;
+                obj.totalOrder = 0;
+                obj.totalEarn = 0;
+                //Traverse through the order
+                foreach (vw_SupplierOrder order in lstOrder.ToList())
+                {
+                    if (order.Product_Id == pro.Id)
+                    {
+                        //Sum the total order were made for a single product
+                        obj.totalOrder += 1;
+                        //Add the money to the total earn
+                        obj.totalEarn += order.TotalPaid;
+                    }
+                }
+                //Add the instance to the list of revenue
+                lstRevenue.Add(obj);
+            }
+            #endregion
+
+            indexView.productRevenue = lstRevenue;
             return View(indexView);
         }
 

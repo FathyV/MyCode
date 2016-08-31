@@ -7,10 +7,8 @@ namespace WebApplication_AlibabaShop.ViewModels
 {
     public class SupplierRevenue
     {
-        public int number { get; set; }
         public string productName { get; set; }
         public int totalOrder { get; set; }
-        public int totalEarn { get; set; }
-
+        public decimal totalEarn { get; set; }
     }
 }

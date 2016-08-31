@@ -47,3 +47,13 @@ C:\Users\Versile\Dropbox\MSV3_Project_SM4 Team Folder\SM4_P2\Project\Source\ToVi
 C:\Users\Versile\Dropbox\MSV3_Project_SM4 Team Folder\SM4_P2\Project\Source\ToViHung\ProjectAlibaba\WcfServices_AlibabaShop\obj\Debug\WcfServices_AlibabaShop.csprojResolveAssemblyReference.cache
 C:\Users\Versile\Dropbox\MSV3_Project_SM4 Team Folder\SM4_P2\Project\Source\ToViHung\ProjectAlibaba\WcfServices_AlibabaShop\obj\Debug\WcfServices_AlibabaShop.dll
 C:\Users\Versile\Dropbox\MSV3_Project_SM4 Team Folder\SM4_P2\Project\Source\ToViHung\ProjectAlibaba\WcfServices_AlibabaShop\obj\Debug\WcfServices_AlibabaShop.pdb
+C:\Users\FathyV\Documents\GitHub\MyCode\ProjectAlibaba\WcfServices_AlibabaShop\bin\Debug\WcfServices_AlibabaShop.dll.config
+C:\Users\FathyV\Documents\GitHub\MyCode\ProjectAlibaba\WcfServices_AlibabaShop\bin\Debug\WcfServices_AlibabaShop.dll
+C:\Users\FathyV\Documents\GitHub\MyCode\ProjectAlibaba\WcfServices_AlibabaShop\bin\Debug\WcfServices_AlibabaShop.pdb
+C:\Users\FathyV\Documents\GitHub\MyCode\ProjectAlibaba\WcfServices_AlibabaShop\bin\Debug\EntityFramework.dll
+C:\Users\FathyV\Documents\GitHub\MyCode\ProjectAlibaba\WcfServices_AlibabaShop\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\FathyV\Documents\GitHub\MyCode\ProjectAlibaba\WcfServices_AlibabaShop\bin\Debug\EntityFramework.xml
+C:\Users\FathyV\Documents\GitHub\MyCode\ProjectAlibaba\WcfServices_AlibabaShop\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\FathyV\Documents\GitHub\MyCode\ProjectAlibaba\WcfServices_AlibabaShop\obj\Debug\WcfServices_AlibabaShop.csprojResolveAssemblyReference.cache
+C:\Users\FathyV\Documents\GitHub\MyCode\ProjectAlibaba\WcfServices_AlibabaShop\obj\Debug\WcfServices_AlibabaShop.dll
+C:\Users\FathyV\Documents\GitHub\MyCode\ProjectAlibaba\WcfServices_AlibabaShop\obj\Debug\WcfServices_AlibabaShop.pdb
