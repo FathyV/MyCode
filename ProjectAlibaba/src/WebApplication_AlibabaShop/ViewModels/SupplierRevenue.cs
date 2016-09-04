@@ -10,5 +10,6 @@ namespace WebApplication_AlibabaShop.ViewModels
         public string productName { get; set; }
         public int totalOrder { get; set; }
         public decimal totalEarn { get; set; }
+        public int totalQuotation { get; set; }        
     }
 }

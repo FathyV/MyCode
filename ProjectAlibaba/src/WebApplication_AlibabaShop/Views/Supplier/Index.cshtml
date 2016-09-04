@@ -54,7 +54,7 @@
         <div class="col-md-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Transaction Summary <small>Weekly progress</small></h2>
+                    <h2>Product Revenue<small>Weekly progress</small></h2>
                     <div class="filter">
                         <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
                             <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
@@ -65,32 +65,38 @@
                 </div>
                 <div class="x_content">
                     <div class="col-md-9 col-sm-12 col-xs-12">
-                        <div class="demo-container" style="height:280px">
-                            <div id="placeholder33x" class="demo-placeholder"></div>
-                        </div>
-                        <div class="tiles">
-                            <div class="col-md-4 tile">
-                                <span>Total Sessions</span>
-                                <h2>231,809</h2>
-                                <span class="sparkline11 graph" style="height: 160px;">
-                                    <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                                </span>
-                            </div>
-                            <div class="col-md-4 tile">
-                                <span>Total Revenue</span>
-                                <h2>$231,809</h2>
-                                <span class="sparkline22 graph" style="height: 160px;">
-                                    <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                                </span>
-                            </div>
-                            <div class="col-md-4 tile">
-                                <span>Total Sessions</span>
-                                <h2>231,809</h2>
-                                <span class="sparkline11 graph" style="height: 160px;">
-                                    <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                                </span>
-                            </div>
-                        </div>
+                        <table class="table table-striped projects">
+                            <thead>
+                                <tr>
+                                    <th style="width: 1%">#</th>
+                                    <th>Product</th>
+                                    <th>Orders</th>
+                                    <th>Quotations</th>
+                                    <th>Revenue</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in @Model.productRevenue)
+                                {
+                                    <tr>
+                                        <td>#</td>
+                                        <td>
+                                            @item.productName
+                                        </td>
+                                        <td><a>@item.totalOrder</a></td>
+                                        <td>@item.totalQuotation</td>
+                                        <td>@item.totalEarn.ToString("C0")</td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Total: </td>
+                                    <td>@Model.totalRevenue.ToString("C0")</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
                     </div>
 
@@ -120,14 +126,14 @@
                                 <!--Top income prodcut-->
                                 @foreach (var item in Model.topProduct)
                                 {
-                                <li class='media event'>
-                                    <a class='pull-left border-aero profile_thumb'><i class='fa fa-user aero'></i></a>
-                                    <div class='media-body'>
-                                        <a class='title' href='#'>@item.ProductName</a>
-                                        <p><strong>@item.Views</strong> views</p>
-                                        <p><small>@item.Price.ToString("C0")</small></p>
-                                    </div>
-                                </li>
+                                    <li class='media event'>
+                                        <a class='pull-left border-aero profile_thumb'><i class='fa fa-user aero'></i></a>
+                                        <div class='media-body'>
+                                            <a class='title' href='#'>@item.ProductName</a>
+                                            <p><strong>@item.Views</strong> views</p>
+                                            <p><small>@item.Price.ToString("C0")</small></p>
+                                        </div>
+                                    </li>
                                 }
                             </ul>
                         </div>
@@ -324,7 +330,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <!--Pending Quotation-->
-                <div class="x_content" >
+                <div class="x_content">
                     <table class="table table-striped projects">
                         <thead>
                             <tr>
