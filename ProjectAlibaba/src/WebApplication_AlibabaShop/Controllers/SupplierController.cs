@@ -144,6 +144,18 @@ namespace WebApplication_AlibabaShop.Controllers
         }
         #endregion
 
+        #region Filter Methods
+        public async Task<IActionResult> ProductSearchResult()
+        {
+            string filterContent=HttpContext.Request.Form.ElementAt(0).Value.ToString();
+            return View();
+        }
+
+        public async Task<IActionResult> OrderSearchResult()
+        {
+            return View();
+        }
+        #endregion
 
         public async Task<IActionResult> Index()
         {
@@ -222,6 +234,18 @@ namespace WebApplication_AlibabaShop.Controllers
                         obj.totalEarn += order.TotalPaid;
                     }
                 }
+
+                //traverse through the quotation
+                foreach (vw_SupplierQuotation quota in lstQuotation.ToList())
+                {
+                    if (quota.Product_Id == pro.Id)
+                    {
+                        //Sum the total order were made for a single product
+                        obj.totalQuotation += 1;
+                        //Add the money to the total earn
+                    }
+                }
+
                 //Add the instance to the list of revenue
                 lstRevenue.Add(obj);
             }
